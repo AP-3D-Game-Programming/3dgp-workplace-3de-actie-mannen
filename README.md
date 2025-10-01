@@ -2,7 +2,7 @@ Dit is de supercoole game van de 3De Actie Mannen
 
 # SpelNaam: BEWAKUHRS VERSUHS DIEVUHN (betere naam tbd)
 
-## De Ontwikkelaars: Alexander Wouter Winkel | Behlul | Wout | Sorry jongens niet goed met namen (vul jezelf mee in)
+## De Ontwikkelaars: Alexander Wouter Winkel | Behlul | Wout Oris | Sorry jongens niet goed met namen (vul jezelf mee in)
 
 ### Korte uitleg van de setting:
 -   Jullie zijn een crew van nachtbewakers en camerakijkers en jullie zijn de allercoolste en allerduurste schat aan het bewaken (mijn hart ♥).
