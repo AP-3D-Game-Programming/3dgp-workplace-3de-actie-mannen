@@ -1,6 +1,6 @@
 Dit is de supercoole game van de 3De Actie Mannen
 
-# SpelNaam: BEWAKUHRS VERSUHS DIEVUHN (betere naam tbd)
+# SpelNaam: BEWAKUHRS VERSUHS DIEVUHN (The Manhunt, Breakout, De NachtWacht)
 
 ## De Ontwikkelaars: Alexander Wouter Winkel | Behlul Kara | Wout Oris | Jonas Vaerewijck
 
