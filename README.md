@@ -5,18 +5,18 @@ Dit is de supercoole game van de 3De Actie Mannen
 ## De Ontwikkelaars: Alexander Wouter Winkel | Behlul Kara | Wout Oris | Jonas Vaerewijck
 
 ### Korte uitleg van de setting:
--   Jullie zijn een crew van nachtbewakers en camerakijkers en jullie zijn de allercoolste en allerduurste schat aan het bewaken (mijn hart ♥).
+-   Jullie zijn een crew van nachtbewakers en camerawachters en jullie zijn de allercoolste en allerduurste schat aan het bewaken (mijn hart ♥).
     Er ligt een dief op de loer... en die wilt deze schat stelen!
     Zorg ervoor dat mijn hart niet gestolen wordt anders krijgt het hele security team billenkoek!
 
 
--   Aantal spelers: 1 dief, 2 bewakers, 1 camerakijker
+-   Aantal spelers: 1 dief, 2 bewakers, 1 camerawachter
 -   Spelduur: 5-10 minuten
 
 #### Spelstukken:
 -   30-50 looptegels (Kan ook een standaardgrid zijn op gewoon een stuk papier fzo voor nu)
 -   2 Bewaker pionnen
--   1 Camerakijker(heeft geen pion)
+-   1 Camerawachter(heeft geen pion)
 -   1(?) dief pion (hoeft niet per se, wrsch niet)
 
 ### Handleiding:
@@ -24,10 +24,10 @@ Dit is de supercoole game van de 3De Actie Mannen
 -   Kies een beginkant voor de dief en aan de andere kant van de layout beginnen de bewakers. Dus als de dief op de tiles aan dit →¬ uiteinde van de L begint, beginnen de bewakers op de tiles van dit └← uiteinde.
 
 #### Beurtverloop:
--   De Bewakers en Camerakijker weten niet waar de Dief is begonnen op een van de starttiles en weten ook niet waar de dief naartoe beweegt als de Dief een zet maakt.
--   Per ronde neemt eerst de Dief 1 stap en daarna de Bewakers 1 stap en als laatste wijst de Camerakijker 1 tile aan om te onthullen of de dief zich op die tile bevindt of niet.
--   Wanneer de Dief wordt onthuld door de Camerakijker zet de Dief weer een stap zonder dat de Bewakers en Camerakijker weten waarnaartoe, een onthulling betekent nog niet het einde van het spel.
--   Pas wanneer een Bewaker op dezelfde tile staat als de Dief hebben de Bewakers en de Camerakijker gewonne.
+-   De Bewakers weten niet waar de Dief is begonnen op een van de starttiles en weten ook niet waar de dief naartoe beweegt als de Dief een zet maakt.
+-   Per ronde neemt eerst de Dief 1 stap en daarna de Bewakers 1 stap en als laatste wijst de Camerawachter 1 tile aan om te onthullen of de dief zich op die tile bevindt of niet.
+-   Wanneer de Dief wordt onthuld door de Camerawachter zet de Dief weer een stap zonder dat de Bewakers en Camerawachter weten waarnaartoe, een onthulling betekent nog niet het einde van het spel.
+-   Pas wanneer een Bewaker op dezelfde tile staat als de Dief hebben de Bewakers gewonne.
 -    Als de Dief voorbij de Bewakers weet te komen zonder gezien te worden heeft de Dief gewonnen.
 
 
