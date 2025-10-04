@@ -38,3 +38,15 @@
 - De dief zijn locatie is zichtbaar voor iedereen wanneer die langs de wachters gaat.
 
 -   Dit zijn een aantal ideeen dat ik heb, we kunnen ook zeggen nee hoeft allemaal niet ik, hij, jij of iemand anders heeft een (beter) idee of nee hoeft niet het spel wat we nu opzich hebben is goed genoeg voor nu.
+
+
+Hier zijn nog ideeen van een ander perspectief:
+- Doorheen het bord zijn nog andere obstakels of kleine doorgangen dat maar één van de twee partijen kan gebruiken onder mogelijk andere:
+- Een "vent" door een muur waar de dief door kan maar niet een wachter.
+- Een tripwire dat de agenten OF de dief kunnen plaatsen wat zorgt dat iemand die over deze tripwire beweegt voor één ronde still staat bijvoorbeeld.
+- Deuren dat een agent kan sluiten dat dan door de dief niet geopend kan worden (mogelijk tenzij we iets zoals een lockpick toevoegen, maar dit kan het mogelijk te complex  maken?)
+- ramen waar wel doorgekeken kan worden, maar niet door bewogen.
+- Een decoy dat de dief kan plaatsen, waardoor dat als ge camera op die tegel kijkt dat ze denken de dief hier is, ookal is die dan mogelijk al ergens anders.
+
+-In plaats van kaarten dat de dief of wachter kan krijgen kunnen we ook zeggen dat elke speler een "deck" van een aantal kaarten heeft dat ze kunnen opbouwen (mogelijk 4-5 kaarten). 
+- Dit zorgt dat beide partijen een strategie kunnen opbouwen, maar dan wel voorzichtig moeten zijn want ze kunnen elke kaart in hun deck maar één keer gebruiken.
