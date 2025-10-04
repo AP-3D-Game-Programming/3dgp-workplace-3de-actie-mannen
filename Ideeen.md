@@ -50,3 +50,10 @@ Hier zijn nog ideeen van een ander perspectief:
 
 -In plaats van kaarten dat de dief of wachter kan krijgen kunnen we ook zeggen dat elke speler een "deck" van een aantal kaarten heeft dat ze kunnen opbouwen (mogelijk 4-5 kaarten). 
 - Dit zorgt dat beide partijen een strategie kunnen opbouwen, maar dan wel voorzichtig moeten zijn want ze kunnen elke kaart in hun deck maar één keer gebruiken.
+
+Voor een 3x3 reveal:
+- Reveal start pas ronde 2 of 3
+- dief kan op 2 of 3 plaatsen starten bvb. 10x5 bord met 2 3x5 uitstekels aan 1 uiteinden
+- Je weet enkel of de dief in de area zit maar niet waar
+- geeft een target als je een positief resultaat krijgt maar de dief kan nog weggeraken
+- geeft een groter verschil tussen bewaker en camerabeheerder
