@@ -1,35 +1,30 @@
-Dit is de supercoole game van de 3De Actie Mannen
+# De Nachtwacht 
+## Ontwikkelaars
+ Alexander Wouter Winkel | Behlul Kara | Wout Oris | Jonas Vaerewijck
 
-# SpelNaam: BEWAKUHRS VERSUHS DIEVUHN (The Manhunt, Breakout, De NachtWacht)
+## korte samenvatting
+#### Werk samen als een crew nachtwachters om een schat te beschermen want er is een dief op de loer die een schat wil stelen! Zorg ervoor dat de dief niet ermee weggeraakt of je wordt ontslagen.
 
-## De Ontwikkelaars: Alexander Wouter Winkel | Behlul Kara | Wout Oris | Jonas Vaerewijck
-
-### Korte uitleg van de setting:
--   Jullie zijn een crew van nachtbewakers en camerawachters en jullie zijn de allercoolste en allerduurste schat aan het bewaken (mijn hart ♥).
-    Er ligt een dief op de loer... en die wilt deze schat stelen!
-    Zorg ervoor dat mijn hart niet gestolen wordt anders krijgt het hele security team billenkoek!
-
-
--   Aantal spelers: 1 dief, 2 bewakers, 1 camerawachter
--   Spelduur: 5-10 minuten
-
-#### Spelstukken:
--   30-50 looptegels (Kan ook een standaardgrid zijn op gewoon een stuk papier fzo voor nu)
+## Materiaal
+-   Spelbord (kan een grid op papier zijn of met tegels gelegd)
 -   2 Bewaker pionnen
--   1 Camerawachter(heeft geen pion)
--   1(?) dief pion (hoeft niet per se, wrsch niet)
+-   1 Camera pion (laat zien waar de camera aan het kijken is)
+-   1 dief pion (Als de dief op een appart spelbord beweegt, anders doet de dief het in hun hoofd)
 
-### Handleiding:
-#### Spel opzet:
--   Kies een beginkant voor de dief en aan de andere kant van de layout beginnen de bewakers. Dus als de dief op de tiles aan dit →¬ uiteinde van de L begint, beginnen de bewakers op de tiles van dit └← uiteinde.
+## Spelgids
+### Spel opzet:
+-   Er wordt gekozen of de dief op een appart bord speelt met een eigen pion of dat de dief gewoon hun zetten in hun hoofd doet.
+-   Kies een beginkant voor de dief, die start dan op een van de tegels aan het uiteinden naar keuze. Aan de andere kant van de layout beginnen de bewakers. Dus als de dief op de tiles aan dit →¬ uiteinde van de L begint, beginnen de bewakers op de tiles van dit └← uiteinde.
 
-#### Beurtverloop:
--   De Bewakers weten niet waar de Dief is begonnen op een van de starttiles en weten ook niet waar de dief naartoe beweegt als de Dief een zet maakt.
--   Per ronde neemt eerst de Dief 1 stap en daarna de Bewakers 1 stap en als laatste wijst de Camerawachter 1 tile aan om te onthullen of de dief zich op die tile bevindt of niet.
+### Beurtverloop:
+-   De dief begint en zet 1 stap, de bewakers weten niet waar de Dief is begonnen op een van de starttegels en weten ook niet waar de dief naartoe beweegt. Nchg de dief, noch de bewakers mogen diagonaal bewegen.
+-   Daarna maken de Bewakers 1 stap en als laatste zet de camerawachter hun pion op een tegel om deze te onthullen.
 -   Wanneer de Dief wordt onthuld door de Camerawachter zet de Dief weer een stap zonder dat de Bewakers en Camerawachter weten waarnaartoe, een onthulling betekent nog niet het einde van het spel.
--   Pas wanneer een Bewaker op dezelfde tile staat als de Dief hebben de Bewakers gewonne.
--    Als de Dief voorbij de Bewakers weet te komen zonder gezien te worden heeft de Dief gewonnen.
+-   Pas wanneer een Bewaker op dezelfde tegel staat als de Dief hebben de Bewakers gewonnen.
+-    Als de Dief Aan het andere einde van het bord komt, dan wint de dief.
 
-
-# Dit is een heel rommelige versie en ik ben geen kei in een duidelijke lijn te maken in de opbouw, ook moeten we kijken hoe we de dief duidelijk kunnen maken, dat dat of met een of ander pionnetje wordt gedaan of dat het duidelijk wordt verwoord dat het met the theatre of mind moet gedaan worden.
-# Ook nog met thuis testen, zodra ik aan de bewakers voorbij was gelopen was het spel ipc voorbij, daar moeten we ook over nadenken
+## Bijlages
+Afbeeldingen en foto's van: 
+- het speelbord
+- een 'normale' setup aan het begin van het spel
+- een voorbeeld van een speler die gewonnen is
