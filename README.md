@@ -3,18 +3,20 @@
  Alexander Wouter Winkel | Behlul Kara | Wout Oris | Jonas Vaerewijck
 
 ## korte samenvatting
-#### Werk samen als een crew nachtwachters om een schat te beschermen want er is een dief op de loer die een schat wil stelen! Zorg ervoor dat de dief niet ermee weggeraakt of je wordt ontslagen.
+#### Werk samen als een crew nachtwachters om een schat te beschermen. Gebruik jullie gadgets om een dief te vangen voor dat die de schat steelt. Pas wel op want de dief heeft ook een hele reeks trucken om te ontsnappen en zich te verstoppen.
 
 ## Materiaal
--   Spelbord (kan een grid op papier zijn of met tegels gelegd)
+-   2 Spelborden (1 voor de bewakers en 1 voor de dief)
 -   2 Bewaker pionnen
--   1 Camera pion (laat zien waar de camera aan het kijken is)
--   1 dief pion (Als de dief op een appart spelbord beweegt, anders doet de dief het in hun hoofd)
+-   2 zaklamp pionnen
+-   heel wat camerapionnen
+-   5 blockeer pionnen
+-   1 dief pion
+-   een divider voor het bord van de dief te verbergen
 
 ## Spelgids
 ### Spel opzet:
--   Er wordt gekozen of de dief op een appart bord speelt met een eigen pion of dat de dief gewoon hun zetten in hun hoofd doet.
--   Kies een beginkant voor de dief, die start dan op een van de tegels aan het uiteinden naar keuze. Aan de andere kant van de layout beginnen de bewakers. Dus als de dief op de tiles aan dit →¬ uiteinde van de L begint, beginnen de bewakers op de tiles van dit └← uiteinde.
+-   De dief zet zich op 1 van de rode tegels naar keuze op hun eigen bord, zorg dat de divider juist staat zodat de bewakers niet kunnen zien waar de dief staat. De grondbewakers kiezen beide een blauwe tegel om op te beginnen, maar ze mogen niet op dezelfde tegel beginnen.
 
 ### Beurtverloop:
 -   De dief begint en zet 1 stap, de bewakers weten niet waar de Dief is begonnen op een van de starttegels en weten ook niet waar de dief naartoe beweegt. Nchg de dief, noch de bewakers mogen diagonaal bewegen.
