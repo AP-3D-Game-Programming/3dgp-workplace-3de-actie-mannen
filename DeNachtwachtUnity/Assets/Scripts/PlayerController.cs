@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
         //Player movement
         transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * verticalInput);
-        transform.Translate(Vector3.left * Time.deltaTime * movementSpeed * horizontalInput);
+        transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * horizontalInput);
 
         //Player turning following mouse
         transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0) * Time.deltaTime * turnSpeed);
