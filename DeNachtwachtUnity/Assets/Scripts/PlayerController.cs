@@ -3,15 +3,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float speed = 5.0f;
+    [SerializeField] float movementSpeed = 5.0f;
     [SerializeField] float horizontalInput;
     [SerializeField] float verticalInput;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] float turnSpeed = 200;
 
     // Update is called once per frame
     void Update()
@@ -20,7 +15,10 @@ public class PlayerController : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
 
         //Player movement
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * horizontalInput);
-        transform.Translate(Vector3.left * Time.deltaTime * speed * verticalInput);
+        transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * verticalInput);
+        transform.Translate(Vector3.left * Time.deltaTime * movementSpeed * horizontalInput);
+
+        //Player turning following mouse
+        transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0) * Time.deltaTime * turnSpeed);
     }
 }
