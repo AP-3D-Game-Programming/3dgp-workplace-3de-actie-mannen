@@ -178,7 +178,8 @@ void InitializeExpressions()
 	Material.VectorExpressions[2] = float4(0.854167,0.971902,1.000000,0.000000);//Base Color
 	Material.VectorExpressions[3] = float4(0.854167,0.971902,1.000000,0.000000);//(Unknown)
 	Material.ScalarExpressions[0] = float4(0.000000,0.100000,0.990000,0.000000);//(Unknown) Opacity Refraction RefractionDepthBias
-}float3 GetMaterialWorldPositionOffset(FMaterialVertexParameters Parameters)
+}
+float3 GetMaterialWorldPositionOffset(FMaterialVertexParameters Parameters)
 {
 	#if USE_INSTANCING
 		// skip if this instance is hidden
