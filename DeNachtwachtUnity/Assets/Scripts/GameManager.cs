@@ -11,17 +11,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI victoryText;
     [SerializeField] TextMeshProUGUI startText;
     [SerializeField] Button startButton;
+    [SerializeField] TextMeshProUGUI interact;
     public bool gameIsActive = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        interact.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (gameIsActive && Input.GetKeyDown(KeyCode.R))
+        {
+            RestartGame();
+        }
     }
 
     public void GameOver()
@@ -50,5 +54,14 @@ public class GameManager : MonoBehaviour
         startButton.gameObject.SetActive(false);
         startText.gameObject.SetActive(false);
         gameIsActive = true;
+    }
+
+    public void Interactable()
+    {
+        interact.gameObject.SetActive(true);
+    }
+    public void Uninteractable()
+    {
+        interact.gameObject.SetActive(false);
     }
 }

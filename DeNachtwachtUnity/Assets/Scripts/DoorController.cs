@@ -12,6 +12,8 @@ public class DoorController : MonoBehaviour
     private Quaternion openRotation;
     private Coroutine currentCoroutine;
 
+    private GameManager gameManager;
+
     private bool isPlayerNearby = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,6 +21,7 @@ public class DoorController : MonoBehaviour
     {
         closedRotation = transform.rotation;
         openRotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0, openAngle, 0));
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -59,6 +62,7 @@ public class DoorController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNearby = true;
+            gameManager.Interactable();
         }
     }
     private void OnTriggerExit(Collider other)
@@ -66,6 +70,7 @@ public class DoorController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNearby = false;
+            gameManager.Uninteractable();
         }
     }
 

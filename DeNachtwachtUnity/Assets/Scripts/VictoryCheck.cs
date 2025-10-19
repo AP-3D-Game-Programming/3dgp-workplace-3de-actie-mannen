@@ -14,6 +14,10 @@ public class VictoryCheck : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.Equals(prize))
+        {
+            gameManager.Interactable();
+        }
         if (other.gameObject.Equals(start) && hasPrize)
         {
             gameManager.Victory();
@@ -25,6 +29,13 @@ public class VictoryCheck : MonoBehaviour
         {
             hasPrize = true;
             prize.SetActive(false);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.Equals(prize))
+        {
+            gameManager.Uninteractable();
         }
     }
 }
