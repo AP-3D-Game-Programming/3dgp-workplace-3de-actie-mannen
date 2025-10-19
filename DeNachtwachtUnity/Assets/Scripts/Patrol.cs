@@ -6,9 +6,9 @@ public class Patrol : MonoBehaviour
 {
     public Transform[] waypoints;
     private int _currentWaypointIndex;
-    private float _speed = 2f;
+    [SerializeField] float _speed = 2f;
 
-    private float _waitTime = 1f;
+    [SerializeField] float _waitTime = 1f;
     private float _waitCounter = 0f;
     private bool _waiting = false;
 
