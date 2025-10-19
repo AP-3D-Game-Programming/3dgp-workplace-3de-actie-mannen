@@ -1,8 +1,17 @@
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI gameOverText;
+    [SerializeField] Button restartButton;
+    [SerializeField] TextMeshProUGUI victoryText;
+    [SerializeField] TextMeshProUGUI startText;
+    [SerializeField] Button startButton;
+    public bool gameIsActive = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,6 +27,9 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("Game Over");
+        gameIsActive = false;
+        gameOverText.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
     }
 
     public void RestartGame()
@@ -25,8 +37,18 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void Victory()
+    {
+        Debug.Log("Victory");
+        gameIsActive = false;
+        victoryText.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
+    }
+
     public void StartGame()
     {
-
+        startButton.gameObject.SetActive(false);
+        startText.gameObject.SetActive(false);
+        gameIsActive = true;
     }
 }
