@@ -2813,6 +2813,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: character-j (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 69f2b47547d755f4686c77a23a1ccd2f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4784,6 +4788,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: character-j
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 69f2b47547d755f4686c77a23a1ccd2f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5257,6 +5265,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.444866, y: 2.8919494, z: 1}
   m_Center: {x: -0.020065606, y: 1.2819844, z: -1.260917e-15}
+--- !u!114 &1539600932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539600927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e65268d3bbe3c1642892851cfee7f232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VictoryCheck
+  prize: {fileID: 2108310762}
+  start: {fileID: 252298783}
+  hasPrize: 0
 --- !u!1 &1539609430 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: abc00000000004401281551283899427, type: 3}
@@ -5314,52 +5337,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1403926400}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1547175473
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1547175475}
-  - component: {fileID: 1547175474}
-  m_Layer: 0
-  m_Name: Game Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1547175474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547175473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e65268d3bbe3c1642892851cfee7f232, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VictoryCheck
-  prize: {fileID: 2108310762}
-  start: {fileID: 252298783}
---- !u!4 &1547175475
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547175473}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.76236, y: 9.38, z: 12.60227}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1559928286
 PrefabInstance:
@@ -5568,6 +5545,50 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: abc00000000004401281551283899427, type: 3}
+--- !u!1 &1625517727
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1625517729}
+  - component: {fileID: 1625517728}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1625517728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625517727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 451843a1eb555e944855d7582321acae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+--- !u!4 &1625517729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625517727}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.69, y: 6.1, z: 18.85272}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1627087185 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: abc00000000010382218814841574628, type: 3}
@@ -6441,6 +6462,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1539600931}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1539600932}
   m_SourcePrefab: {fileID: 100100000, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
 --- !u!1 &1816018323 stripped
 GameObject:
@@ -7752,7 +7776,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -8168,7 +8192,7 @@ SceneRoots:
   - {fileID: 2016380736}
   - {fileID: 1403926400}
   - {fileID: 2108310761}
-  - {fileID: 1547175475}
   - {fileID: 252298785}
   - {fileID: 749182227}
   - {fileID: 2061357735}
+  - {fileID: 1625517729}

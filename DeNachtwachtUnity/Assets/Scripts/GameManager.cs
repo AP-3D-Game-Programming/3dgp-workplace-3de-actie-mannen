@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,5 +13,20 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("Game Over");
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void StartGame()
+    {
+
     }
 }
