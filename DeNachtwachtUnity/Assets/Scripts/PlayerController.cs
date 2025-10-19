@@ -20,5 +20,6 @@ public class PlayerController : MonoBehaviour
 
         //Player turning following mouse
         transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0) * Time.deltaTime * turnSpeed);
+        transform.rotation = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
     }
 }

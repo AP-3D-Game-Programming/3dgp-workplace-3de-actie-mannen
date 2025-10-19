@@ -4,7 +4,7 @@ public class VictoryCheck : MonoBehaviour
 {
     public GameObject prize;
     public GameObject start;
-    private bool hasPrize = false;
+    [SerializeField] bool hasPrize = false;
 
     private void OnTriggerEnter(Collider other)
     {
