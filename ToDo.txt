@@ -1,0 +1,4 @@
+- Camera 1 person or top down
+- wachters kunnen speler zien
+- sluipen en rennen
+- give colors to scene for clarity
