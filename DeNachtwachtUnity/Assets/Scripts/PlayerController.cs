@@ -1,14 +1,21 @@
 using NUnit.Framework;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float movementSpeed = 5.0f;
+    private float walkSpeed = 4.0f;
+    private float crouchSpeed = 2.0f;
+    private float sprintSpeed = 6.0f;
+    [SerializeField] float currentSpeed;
+
     [SerializeField] float horizontalInput;
     [SerializeField] float verticalInput;
     [SerializeField] float turnSpeed = 200;
+
     private Rigidbody playerRb;
     private GameManager gameManager;
+
 
     void Start()
     {
@@ -24,12 +31,27 @@ public class PlayerController : MonoBehaviour
             verticalInput = Input.GetAxis("Vertical");
 
             //Player movement
-            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed * verticalInput);
-            transform.Translate(Vector3.right * Time.deltaTime * movementSpeed * horizontalInput);
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                currentSpeed = sprintSpeed;
+            }
+            else if (Input.GetKey(KeyCode.LeftControl))
+            {
+                currentSpeed = crouchSpeed;
+            }
+            else
+            {
+                currentSpeed = walkSpeed;
+            }
+
+            transform.Translate(Vector3.forward * Time.deltaTime * currentSpeed * verticalInput);
+            transform.Translate(Vector3.right * Time.deltaTime * currentSpeed * horizontalInput);
 
             //Player turning following mouse
             transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0) * Time.deltaTime * turnSpeed);
             transform.rotation = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
+
+            
         }
     }
 
