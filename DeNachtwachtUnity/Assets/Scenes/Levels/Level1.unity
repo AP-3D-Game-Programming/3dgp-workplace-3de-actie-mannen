@@ -8165,12 +8165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 451843a1eb555e944855d7582321acae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  gameOverText: {fileID: 624020460}
-  restartButton: {fileID: 1550685600}
-  victoryText: {fileID: 463282264}
-  startText: {fileID: 1648447303}
-  startButton: {fileID: 1040328100}
-  interact: {fileID: 1377828724}
+  player: {fileID: 1539600927}
+  startScreen: {fileID: 0}
+  pauseScreen: {fileID: 0}
   gameIsActive: 0
 --- !u!4 &1625517729
 Transform:
@@ -9262,6 +9259,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e43aaa47c6e82409e64214a81c9f02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Patrol
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
   waypoints:
   - {fileID: 1731859149}
   - {fileID: 2035964697}
@@ -9272,6 +9275,8 @@ MonoBehaviour:
   - {fileID: 1758160604}
   _speed: 6
   _waitTime: 1
+  sightRange: 0
+  attackRange: 0
 --- !u!65 &1763362915
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11105,13 +11110,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2058811804}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 25, y: 2, z: -9}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 25, y: 10, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
 --- !u!114 &2058811808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11169,9 +11174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   player: {fileID: 1539600927}
-  xOffset: -1
-  yOffset: 2
-  zOffset: -2
+  upOffset: 10
 --- !u!1 &2064193085 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: abc00000000004401281551283899427, type: 3}
@@ -11300,6 +11303,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e43aaa47c6e82409e64214a81c9f02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Patrol
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
   waypoints:
   - {fileID: 885667976}
   - {fileID: 16379636}
@@ -11309,6 +11318,8 @@ MonoBehaviour:
   - {fileID: 1336086990}
   _speed: 5
   _waitTime: 1
+  sightRange: 0
+  attackRange: 0
 --- !u!65 &2098545523
 BoxCollider:
   m_ObjectHideFlags: 0

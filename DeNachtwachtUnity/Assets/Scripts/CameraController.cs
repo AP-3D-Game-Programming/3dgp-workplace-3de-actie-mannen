@@ -5,15 +5,15 @@ public class CameraController : MonoBehaviour
     [SerializeField] GameObject player;
 
     //Offset values
-    [SerializeField] float upOffset = -15;
+    [SerializeField] float upOffset = 15;
 
     // Update is called once per frame
     void LateUpdate()
     {
-        //Have camera rotate in the same direction as player
-        
+        //Have camera look down at player
+        transform.rotation = Quaternion.Euler(90, -90, 0);
 
-        //Have camera remain behind player
-        transform.position = player.transform.position + transform.forward * upOffset;
+        //Have camera remain above player
+        transform.position = player.transform.position + player.transform.up * upOffset;
     }
 }
