@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
     void LateUpdate()
     {
         //Have camera look down at player
-        transform.rotation = Quaternion.Euler(90, -90, 0);
+        transform.rotation = Quaternion.Euler(90, 90, 0);
 
         //Have camera remain above player
         transform.position = player.transform.position + player.transform.up * upOffset;
