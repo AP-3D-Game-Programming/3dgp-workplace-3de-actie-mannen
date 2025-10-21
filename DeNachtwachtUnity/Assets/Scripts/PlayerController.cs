@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         playerRb = GetComponent<Rigidbody>();
     }
     // Update is called once per frame

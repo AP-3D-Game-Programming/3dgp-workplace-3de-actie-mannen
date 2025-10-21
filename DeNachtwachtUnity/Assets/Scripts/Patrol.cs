@@ -24,9 +24,10 @@ public class Patrol : MonoBehaviour
     private GameManager gameManager;
     private void Start()
     {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         agent = GetComponent<NavMeshAgent>();
+        player = GameObject.Find("Player");
     }
 
     private void Update()
@@ -35,8 +36,8 @@ public class Patrol : MonoBehaviour
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
 
         if (!playerInSight && !playerInAttackRange) Patrolling();
-        if (!playerInSight && !playerInAttackRange) Chase();
-        if (playerInSight && playerInAttackRange) Attack();
+        if (playerInSight && !playerInAttackRange) Chase();
+        //if (playerInSight && playerInAttackRange) Attack();
 
     }
 
@@ -45,10 +46,8 @@ public class Patrol : MonoBehaviour
         agent.SetDestination(player.transform.position);
     }
 
-    private void Attack()
-    {
+    //private void Attack()
 
-    }
     private void Patrolling()
     {
         if (gameManager.gameIsActive)

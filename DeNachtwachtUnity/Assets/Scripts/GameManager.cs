@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        StartGame();
     }
 
     // Update is called once per frame
@@ -26,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     public void PauseToggle()
     {
-        gameIsActive = false;
+        gameIsActive = !gameIsActive;
 
     }
 
