@@ -1,4 +1,10 @@
 - Camera 1 person or top down
 - wachters kunnen speler zien
-- sluipen en rennen
+- sluipen en rennen afwerken
 - give colors to scene for clarity
+- game manager bijwerken
+- Levels maken
+- main hub
+- key voor deuren?
+- camera enemy
+- crouch paths
