@@ -6,34 +6,41 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI gameOverText;
-    [SerializeField] Button restartButton;
-    [SerializeField] TextMeshProUGUI victoryText;
-    [SerializeField] TextMeshProUGUI startText;
-    [SerializeField] Button startButton;
-    [SerializeField] TextMeshProUGUI interact;
+    [SerializeField] GameObject player;
+    [SerializeField] Canvas startScreen;
+    [SerializeField] Canvas pauseScreen;
     public bool gameIsActive = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        interact.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameIsActive && Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            RestartGame();
-        }
+            PauseToggle();
+        } 
+    }
+
+    public void PauseToggle()
+    {
+        gameIsActive = false;
+
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 
     public void GameOver()
     {
         Debug.Log("Game Over");
         gameIsActive = false;
-        gameOverText.gameObject.SetActive(true);
-        restartButton.gameObject.SetActive(true);
+        //gameOverText.gameObject.SetActive(true);
+        //restartButton.gameObject.SetActive(true);
     }
 
     public void RestartGame()
@@ -45,23 +52,22 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Victory");
         gameIsActive = false;
-        victoryText.gameObject.SetActive(true);
-        restartButton.gameObject.SetActive(true);
+        //victoryText.gameObject.SetActive(true);
+        //restartButton.gameObject.SetActive(true);
     }
 
     public void StartGame()
     {
-        startButton.gameObject.SetActive(false);
-        startText.gameObject.SetActive(false);
+        startScreen.gameObject.SetActive(false);
         gameIsActive = true;
     }
 
     public void Interactable()
     {
-        interact.gameObject.SetActive(true);
+        //interact.gameObject.SetActive(true);
     }
     public void Uninteractable()
     {
-        interact.gameObject.SetActive(false);
+        //interact.gameObject.SetActive(false);
     }
 }
