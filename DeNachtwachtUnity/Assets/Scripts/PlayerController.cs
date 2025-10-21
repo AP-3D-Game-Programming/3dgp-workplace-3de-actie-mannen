@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float walkSpeed = 4.0f;
-    private float crouchSpeed = 2.0f;
-    private float sprintSpeed = 6.0f;
+    [SerializeField] float walkSpeed = 4.0f;
+    [SerializeField] float crouchSpeed = 2.0f;
+    [SerializeField] float sprintSpeed = 6.0f;
     [SerializeField] float currentSpeed;
 
     [SerializeField] float horizontalInput;
