@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Patrol : MonoBehaviour
 {
+    NavMeshAgent agent;
+    GameObject player;
+    [SerializeField] LayerMask groundLayer, playerLayer;
+
     public Transform[] waypoints;
     private int _currentWaypointIndex;
     [SerializeField] float _speed = 2f;
@@ -12,13 +17,39 @@ public class Patrol : MonoBehaviour
     private float _waitCounter = 0f;
     private bool _waiting = false;
 
+    //State change
+    [SerializeField] float sightRange, attackRange;
+    bool playerInSight, playerInAttackRange;
+
     private GameManager gameManager;
     private void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
+        agent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
+    {
+        playerInSight = Physics.CheckSphere(transform.position, sightRange, playerLayer);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
+
+        if (!playerInSight && !playerInAttackRange) Patrolling();
+        if (!playerInSight && !playerInAttackRange) Chase();
+        if (playerInSight && playerInAttackRange) Attack();
+
+    }
+
+    private void Chase()
+    {
+        agent.SetDestination(player.transform.position);
+    }
+
+    private void Attack()
+    {
+
+    }
+    private void Patrolling()
     {
         if (gameManager.gameIsActive)
         {
