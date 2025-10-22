@@ -1,18 +1,33 @@
 using NUnit.Framework;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    //Speeds
     [SerializeField] float walkSpeed = 4.0f;
     [SerializeField] float crouchSpeed = 2.0f;
     [SerializeField] float sprintSpeed = 6.0f;
     [SerializeField] float currentSpeed;
 
+    //Stamina
+    [SerializeField] Image staminaBar;
+    [SerializeField] float currentStamina;
+    [SerializeField] float maxStamina;
+    [SerializeField] float staminaLoss = 20f;
+    private Coroutine rechargeStamina;
+    [SerializeField] float chargeRateStamina;
+    [SerializeField] bool isExhausted = false;
+
+    //Input
     [SerializeField] float horizontalInput;
     [SerializeField] float verticalInput;
-    [SerializeField] float turnSpeed = 200;
 
+    //Reference
     private Rigidbody playerRb;
     private GameManager gameManager;
 
@@ -21,19 +36,44 @@ public class PlayerController : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         playerRb = GetComponent<Rigidbody>();
+
+        currentStamina = maxStamina;
     }
     // Update is called once per frame
     void Update()
     {
         if (gameManager.gameIsActive)
         {
+            //Player Movement
             horizontalInput = Input.GetAxis("Horizontal");
             verticalInput = Input.GetAxis("Vertical");
 
-            //Player movement
+            Vector3 move = new Vector3(horizontalInput, 0f, verticalInput).normalized;
+
+            if (move != Vector3.zero)
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(move), 0.15f);
+
+                transform.Translate(move * currentSpeed * Time.deltaTime, Space.World);
+            }
+
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 currentSpeed = sprintSpeed;
+
+                currentStamina -= staminaLoss * Time.deltaTime;
+                if (currentStamina < 0)
+                {
+                    currentStamina = 0;
+                }
+                staminaBar.fillAmount = currentStamina / maxStamina;
+
+                if (rechargeStamina != null)
+                {
+                    StopCoroutine(rechargeStamina);
+                }
+                rechargeStamina = StartCoroutine(RechargeStamina());
+                
             }
             else if (Input.GetKey(KeyCode.LeftControl))
             {
@@ -41,19 +81,40 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                
                 currentSpeed = walkSpeed;
             }
 
-            transform.Translate(Vector3.forward * Time.deltaTime * currentSpeed * verticalInput);
-            transform.Translate(Vector3.right * Time.deltaTime * currentSpeed * horizontalInput);
-
-            //Player turning following mouse
-            transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0) * Time.deltaTime * turnSpeed);
-            transform.rotation = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
-
-            
+            if (currentStamina <= 0)
+            {
+                isExhausted = true;
+                currentSpeed = 2f;
+            }
         }
     }
+
+    private IEnumerator RechargeStamina()
+    {
+        yield return new WaitForSeconds(1f);
+
+        while (currentStamina < maxStamina)
+        {
+            currentStamina += chargeRateStamina / 10f;
+            if (isExhausted && currentStamina >= maxStamina / 2f)
+            {
+                isExhausted = false;
+            }
+
+            if (currentStamina > maxStamina)
+            {
+                currentStamina = maxStamina;
+            }
+            staminaBar.fillAmount = currentStamina / maxStamina;
+            yield return new WaitForSeconds(.1f);
+        }
+    }
+
+
 
     private void OnTriggerEnter(Collider other)
     {
