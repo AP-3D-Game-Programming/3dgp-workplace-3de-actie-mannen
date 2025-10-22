@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,7 +23,7 @@ public class Patrol : MonoBehaviour
     bool playerInSight, playerInAttackRange;
 
     private GameManager gameManager;
-    private void Start()
+    private void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
@@ -57,22 +58,32 @@ public class Patrol : MonoBehaviour
                 _waitCounter += Time.deltaTime;
                 if (_waitCounter < _waitTime)
                     return;
+
                 _waiting = false;
+                agent.SetDestination(waypoints[_currentWaypointIndex].position);
             }
-            Transform wp = waypoints[_currentWaypointIndex];
-            if (Vector3.Distance(transform.position, wp.position) < 0.01f)
+            if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
             {
-                transform.position = wp.position;
-                _waitCounter = 0f;
                 _waiting = true;
+                _waitCounter = 0f;
 
                 _currentWaypointIndex = (_currentWaypointIndex + 1) % waypoints.Length;
             }
-            else
-            {
-                transform.position = Vector3.MoveTowards(transform.position, wp.position, _speed * Time.deltaTime);
-                transform.LookAt(wp.position);
-            }
+///Redundant code based on just waypoints and not on MavMesh
+            //Transform wp = waypoints[_currentWaypointIndex];
+            //if (Vector3.Distance(transform.position, wp.position) < 0.01f)
+            //{
+            //    transform.position = wp.position;
+            //    _waitCounter = 0f;
+            //    _waiting = true;
+
+            //    _currentWaypointIndex = (_currentWaypointIndex + 1) % waypoints.Length;
+            //}
+            //else
+            //{
+            //    transform.position = Vector3.MoveTowards(transform.position, wp.position, _speed * Time.deltaTime);
+            //    transform.LookAt(wp.position);
+            //}
         }
     }
 }
