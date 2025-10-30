@@ -4,7 +4,9 @@
 - give colors to scene for clarity
 - game manager bijwerken
 - Levels maken
+- Level manager
 - main hub
+- Hub manager
 - key voor deuren?
 - camera enemy
 - crouch paths
