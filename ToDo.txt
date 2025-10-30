@@ -1,4 +1,4 @@
-- Camera 1 person or top down
+- Camera 1 person or top down X
 - wachters kunnen speler zien
 - sluipen en rennen afwerken
 - give colors to scene for clarity
@@ -8,3 +8,4 @@
 - key voor deuren?
 - camera enemy
 - crouch paths
+- Loading screen
