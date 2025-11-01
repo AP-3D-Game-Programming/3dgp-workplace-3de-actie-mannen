@@ -9,58 +9,78 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] Canvas startScreen;
     [SerializeField] Canvas pauseScreen;
-    public bool gameIsActive = false;
+    [SerializeField] Canvas EndScreen;
+    public bool gameIsActive;
+    private bool gameStarted;
+    private int currentLevel;
+
+    LevelManager lvlManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartGame();
+        currentLevel = 0;
+        gameIsActive = false;
+        gameStarted = false;
+        startScreen.gameObject.SetActive(true);
+        pauseScreen.gameObject.SetActive(false);
+        EndScreen.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && gameStarted)
         {
             PauseToggle();
-        } 
-    }
-
-    public void PauseToggle()
+        }
+    }    
+    
+    public void StartGame()
     {
-        gameIsActive = !gameIsActive;
-
+        startScreen.gameObject.SetActive(false);
+        gameIsActive = true;
+        gameStarted = true;
     }
-
+    
     public void Quit()
     {
         Application.Quit();
     }
 
-    public void GameOver()
+    public void PauseToggle()
     {
-        Debug.Log("Game Over");
-        gameIsActive = false;
-        //gameOverText.gameObject.SetActive(true);
-        //restartButton.gameObject.SetActive(true);
+        gameIsActive = !gameIsActive;
+        pauseScreen.gameObject.SetActive(!pauseScreen.gameObject.activeSelf);
     }
 
-    public void RestartGame()
+    public void GameOver()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        gameIsActive = false;
+        EndScreen.gameObject.SetActive(true);
+    }
+    // can be replaced with LoadLevel(currentLevel)
+    public void RestartLevel()
+    {
+        SceneManager.UnloadSceneAsync(currentLevel + 1);
+        SceneManager.LoadScene(currentLevel+1, LoadSceneMode.Additive);
+        GameObject.Find("LevelManager").GetComponent<LevelManager>();
+    }
+
+    public void LoadLevel(int toLoad)
+    {
+        // need control for what level can be loaded
+        SceneManager.UnloadSceneAsync(currentLevel+1);
+        currentLevel = toLoad + 1;
+        SceneManager.LoadScene(toLoad+1, LoadSceneMode.Additive);
+        GameObject.Find("LevelManager").GetComponent<LevelManager>();
     }
 
     public void Victory()
     {
         Debug.Log("Victory");
         gameIsActive = false;
-        //victoryText.gameObject.SetActive(true);
+        EndScreen.gameObject.SetActive(true);
         //restartButton.gameObject.SetActive(true);
-    }
-
-    public void StartGame()
-    {
-        startScreen.gameObject.SetActive(false);
-        gameIsActive = true;
     }
 
     public void Interactable()
