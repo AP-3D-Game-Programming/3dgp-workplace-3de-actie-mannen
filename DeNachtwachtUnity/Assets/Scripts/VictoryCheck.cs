@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class VictoryCheck : MonoBehaviour
 {
-    public GameObject prize;
-    public GameObject start;
+    [SerializeField] GameObject prize;
+    [SerializeField] GameObject start;
     [SerializeField] bool hasPrize = false;
     private GameManager gameManager;
 
     private void Start()
     {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     private void OnTriggerEnter(Collider other)
