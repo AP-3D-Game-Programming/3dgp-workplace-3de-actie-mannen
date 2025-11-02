@@ -7,28 +7,29 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject player;
-    [SerializeField] Canvas startScreen;
-    [SerializeField] Canvas pauseScreen;
-    [SerializeField] Canvas EndScreen;
+    [SerializeField] Canvas menuScreen;
+    [SerializeField] Canvas gameplayScreen;
     public bool gameIsActive;
     private bool gameStarted;
     private int currentLevel;
 
     LevelManager lvlManager;
+
+    private string[] levelnames = { "Hub", "Level1", "Level2" };
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentLevel = 0;
         gameIsActive = false;
         gameStarted = false;
-        startScreen.gameObject.SetActive(true);
-        pauseScreen.gameObject.SetActive(false);
-        EndScreen.gameObject.SetActive(false);
+        StartScreen();
+        gameplayScreen.gameObject.SetActive(false);
     }
-
+    
     // Update is called once per frame
     void Update()
     {
+        gameplayScreen.gameObject.SetActive(gameIsActive);
         if (Input.GetKeyDown(KeyCode.Escape) && gameStarted)
         {
             PauseToggle();
@@ -37,7 +38,7 @@ public class GameManager : MonoBehaviour
     
     public void StartGame()
     {
-        startScreen.gameObject.SetActive(false);
+        menuScreen.gameObject.SetActive(false);
         gameIsActive = true;
         gameStarted = true;
     }
@@ -50,36 +51,35 @@ public class GameManager : MonoBehaviour
     public void PauseToggle()
     {
         gameIsActive = !gameIsActive;
-        pauseScreen.gameObject.SetActive(!pauseScreen.gameObject.activeSelf);
+        if (gameIsActive)
+            menuScreen.gameObject.SetActive(false);
+        else
+            PauseScreen();
     }
 
     public void GameOver()
     {
         gameIsActive = false;
-        EndScreen.gameObject.SetActive(true);
-    }
-    // can be replaced with LoadLevel(currentLevel)
-    public void RestartLevel()
-    {
-        SceneManager.UnloadSceneAsync(currentLevel + 1);
-        SceneManager.LoadScene(currentLevel+1, LoadSceneMode.Additive);
-        GameObject.Find("LevelManager").GetComponent<LevelManager>();
+        GameOverScreen();
     }
 
-    public void LoadLevel(int toLoad)
+    public async void LoadLevel(int toLoad)
     {
+        menuScreen.gameObject.SetActive(false);
+        gameIsActive = false;
         // need control for what level can be loaded
-        SceneManager.UnloadSceneAsync(currentLevel+1);
-        currentLevel = toLoad + 1;
-        SceneManager.LoadScene(toLoad+1, LoadSceneMode.Additive);
-        GameObject.Find("LevelManager").GetComponent<LevelManager>();
+        await SceneManager.UnloadSceneAsync(levelnames[currentLevel]);
+        currentLevel = toLoad;
+        SceneManager.LoadScene(levelnames[toLoad], LoadSceneMode.Additive);
+        GameObject.Find("LevelManager").GetComponent<LevelManager>().prepareLevel();
+        gameIsActive = true;
     }
 
     public void Victory()
     {
         Debug.Log("Victory");
         gameIsActive = false;
-        EndScreen.gameObject.SetActive(true);
+        menuScreen.gameObject.SetActive(true);
         //restartButton.gameObject.SetActive(true);
     }
 
@@ -90,5 +90,125 @@ public class GameManager : MonoBehaviour
     public void Uninteractable()
     {
         //interact.gameObject.SetActive(false);
+    }
+
+    private void StartScreen()
+    {
+        foreach (var button in menuScreen.GetComponentsInChildren<Button>())
+        {
+            if (button.gameObject.name == "o1")
+            {
+                button.onClick.AddListener(StartGame);
+            } 
+            else if (button.gameObject.name == "o2")
+            {
+                button.gameObject.SetActive(false);
+            }
+        }
+        foreach (var text in menuScreen.GetComponentsInChildren<TextMeshProUGUI>())
+        {
+            switch (text.gameObject.name)
+            {
+                case "Title":
+                    text.text = "De Nachtwacht";
+                    break;
+                case "o1Text":
+                    text.text = "Start";
+                    break;
+            }
+        }
+    }
+    private void PauseScreen()
+    {
+        foreach (var button in menuScreen.GetComponentsInChildren<Button>())
+        {
+            if (button.gameObject.name == "o1")
+            {
+                button.onClick.AddListener(PauseToggle);
+            }
+            else if (button.gameObject.name == "o2")
+            {
+                if (currentLevel != 0)
+                {
+                    button.gameObject.SetActive(true);
+                    button.onClick.AddListener(delegate { LoadLevel(0); });
+                }
+                else
+                    button.gameObject.SetActive(false);
+            }
+        }
+        foreach (var text in menuScreen.GetComponentsInChildren<TextMeshProUGUI>())
+        {
+            switch (text.gameObject.name)
+            {
+                case "Title":
+                    text.text = "Paused";
+                    break;
+                case "o1Text":
+                    text.text = "Continue";
+                    break;
+                case "o2Text":
+                    text.text = "Back to hub";
+                    break;
+            }
+        }
+    }
+
+    private void GameOverScreen()
+    {
+        foreach (var button in menuScreen.GetComponentsInChildren<Button>())
+        {
+            if (button.gameObject.name == "o1")
+                button.onClick.AddListener(delegate { LoadLevel(currentLevel); });
+            else if (button.gameObject.name == "o2")
+            {
+                button.gameObject.SetActive(true);
+                button.onClick.AddListener(delegate { LoadLevel(0); });
+            }
+        }
+        foreach (var text in menuScreen.GetComponentsInChildren<TextMeshProUGUI>())
+        {
+            switch (text.gameObject.name)
+            {
+                case "Title":
+                    text.text = "You died!";
+                    break;
+                case "o1Text":
+                    text.text = "Retry";
+                    break;
+                case "o2Text":
+                    text.text = "Exit level";
+                    break;
+            }
+        }
+    }
+
+    private void VictoryScreen()
+    {
+        foreach (var button in menuScreen.GetComponentsInChildren<Button>())
+        {
+            if (button.gameObject.name == "o1")
+                button.onClick.AddListener(delegate { LoadLevel(0); });
+            else if (button.gameObject.name == "o2")
+            {
+                button.gameObject.SetActive(true);
+                button.onClick.AddListener(delegate { LoadLevel(currentLevel); });
+            }
+        }
+        foreach (var text in menuScreen.GetComponentsInChildren<TextMeshProUGUI>())
+        {
+            switch (text.gameObject.name)
+            {
+                case "Title":
+                    text.text = "Victory!";
+                    break;
+                case "o1Text":
+                    text.text = "To hub";
+                    break;
+                case "o2Text":
+                    text.text = "Retry level";
+                    break;
+            }
+        }
     }
 }
