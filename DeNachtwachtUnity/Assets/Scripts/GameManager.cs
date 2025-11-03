@@ -1,5 +1,7 @@
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,6 +9,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject player;
+    [SerializeField] GameObject cube;
+    [SerializeField] GameObject start;
+
     [SerializeField] Canvas menuScreen;
     [SerializeField] Canvas gameplayScreen;
     public bool gameIsActive;
@@ -15,15 +20,16 @@ public class GameManager : MonoBehaviour
 
     LevelManager lvlManager;
 
-    private string[] levelnames = { "Hub", "Level1", "Level2" };
+    private string[] levelnames = { "Assets/Scenes/Levels/Hub.unity", "Assets/Scenes/Levels/Level1.unity", "Assets/Scenes/Levels/Level2.unity" };
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currentLevel = 0;
+        currentLevel = -1;
         gameIsActive = false;
         gameStarted = false;
         StartScreen();
         gameplayScreen.gameObject.SetActive(false);
+        
     }
     
     // Update is called once per frame
@@ -39,8 +45,10 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         menuScreen.gameObject.SetActive(false);
+        gameplayScreen.gameObject.SetActive(true);
         gameIsActive = true;
         gameStarted = true;
+        LoadLevel(0);
     }
     
     public void Quit()
@@ -60,6 +68,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameIsActive = false;
+        gameplayScreen.gameObject.SetActive(false);
         GameOverScreen();
     }
 
@@ -68,28 +77,30 @@ public class GameManager : MonoBehaviour
         menuScreen.gameObject.SetActive(false);
         gameIsActive = false;
         // need control for what level can be loaded
-        await SceneManager.UnloadSceneAsync(levelnames[currentLevel]);
+        if (currentLevel != -1)
+            await SceneManager.UnloadSceneAsync(levelnames[currentLevel]);
         currentLevel = toLoad;
-        SceneManager.LoadScene(levelnames[toLoad], LoadSceneMode.Additive);
-        GameObject.Find("LevelManager").GetComponent<LevelManager>().prepareLevel();
+        await SceneManager.LoadSceneAsync(levelnames[toLoad], LoadSceneMode.Additive);
+        var test = GameObject.Find("LevelManager");
+        Debug.Log(test == null);
+        //test.prepareLevel(player, cube, start);
         gameIsActive = true;
+        gameplayScreen.gameObject.SetActive(true);
     }
 
     public void Victory()
     {
-        Debug.Log("Victory");
         gameIsActive = false;
-        menuScreen.gameObject.SetActive(true);
-        //restartButton.gameObject.SetActive(true);
+        VictoryScreen();
     }
 
     public void Interactable()
     {
-        //interact.gameObject.SetActive(true);
+        gameplayScreen.GetComponent<TextMeshProUGUI>().gameObject.SetActive(true);
     }
     public void Uninteractable()
     {
-        //interact.gameObject.SetActive(false);
+        gameplayScreen.GetComponent<TextMeshProUGUI>().gameObject.SetActive(false);
     }
 
     private void StartScreen()

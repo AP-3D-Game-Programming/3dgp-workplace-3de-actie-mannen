@@ -6,16 +6,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject startPosition;
     [SerializeField] GameObject cubePosition;
 
-    private GameObject cube;
-    private GameObject player;
-    void Start()
-    {
-        cube = GameObject.Find("Cube");
-        player = GameObject.Find("Player");
-    }
-    public void prepareLevel()
+    public void prepareLevel(GameObject player, GameObject cube, GameObject start)
     {
         player.transform.position = startPosition.transform.position;
         cube.transform.position = cubePosition.transform.position;
+        start.transform.position = startPosition.transform.position;
     }
 }
