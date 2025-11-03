@@ -20,6 +20,8 @@ public class VictoryCheck : MonoBehaviour
         }
         if (other.gameObject.Equals(start) && hasPrize)
         {
+            hasPrize = false;
+            prize.SetActive(true);
             gameManager.Victory();
         }
     }

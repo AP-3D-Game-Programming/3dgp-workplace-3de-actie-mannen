@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Canvas gameplayScreen;
     public bool gameIsActive;
     private bool gameStarted;
-    private int currentLevel;
+    [SerializeField] int currentLevel;
 
     LevelManager lvlManager;
 
@@ -81,9 +81,7 @@ public class GameManager : MonoBehaviour
             await SceneManager.UnloadSceneAsync(levelnames[currentLevel]);
         currentLevel = toLoad;
         await SceneManager.LoadSceneAsync(levelnames[toLoad], LoadSceneMode.Additive);
-        var test = GameObject.Find("LevelManager");
-        Debug.Log(test == null);
-        //test.prepareLevel(player, cube, start);
+        GameObject.Find("LevelManager").GetComponent<LevelManager>().prepareLevel(player, cube, start);
         gameIsActive = true;
         gameplayScreen.gameObject.SetActive(true);
     }
@@ -96,23 +94,32 @@ public class GameManager : MonoBehaviour
 
     public void Interactable()
     {
-        gameplayScreen.GetComponent<TextMeshProUGUI>().gameObject.SetActive(true);
+        foreach (var text in gameplayScreen.GetComponents<TextMeshProUGUI>()) {
+            if (text.gameObject.name == "interact")
+                text.gameObject.SetActive(true);
+        }
     }
     public void Uninteractable()
     {
-        gameplayScreen.GetComponent<TextMeshProUGUI>().gameObject.SetActive(false);
+        foreach (var text in gameplayScreen.GetComponents<TextMeshProUGUI>())
+        {
+            if (text.gameObject.name == "interact")
+                text.gameObject.SetActive(false);
+        }
     }
 
     private void StartScreen()
     {
+        menuScreen.gameObject.SetActive(true);
         foreach (var button in menuScreen.GetComponentsInChildren<Button>())
         {
-            if (button.gameObject.name == "o1")
-            {
+            if (button.gameObject.name == "o1") { 
+                button.onClick.RemoveAllListeners();
                 button.onClick.AddListener(StartGame);
             } 
             else if (button.gameObject.name == "o2")
             {
+                button.onClick.RemoveAllListeners();
                 button.gameObject.SetActive(false);
             }
         }
@@ -131,14 +138,17 @@ public class GameManager : MonoBehaviour
     }
     private void PauseScreen()
     {
+        menuScreen.gameObject.SetActive(true);
         foreach (var button in menuScreen.GetComponentsInChildren<Button>())
         {
             if (button.gameObject.name == "o1")
             {
+                button.onClick.RemoveAllListeners();
                 button.onClick.AddListener(PauseToggle);
             }
             else if (button.gameObject.name == "o2")
             {
+                button.onClick.RemoveAllListeners();
                 if (currentLevel != 0)
                 {
                     button.gameObject.SetActive(true);
@@ -167,12 +177,17 @@ public class GameManager : MonoBehaviour
 
     private void GameOverScreen()
     {
+        menuScreen.gameObject.SetActive(true);
         foreach (var button in menuScreen.GetComponentsInChildren<Button>())
         {
             if (button.gameObject.name == "o1")
+            {
+                button.onClick.RemoveAllListeners();
                 button.onClick.AddListener(delegate { LoadLevel(currentLevel); });
+            }
             else if (button.gameObject.name == "o2")
             {
+                button.onClick.RemoveAllListeners();
                 button.gameObject.SetActive(true);
                 button.onClick.AddListener(delegate { LoadLevel(0); });
             }
@@ -196,12 +211,17 @@ public class GameManager : MonoBehaviour
 
     private void VictoryScreen()
     {
+        menuScreen.gameObject.SetActive(true);
         foreach (var button in menuScreen.GetComponentsInChildren<Button>())
         {
             if (button.gameObject.name == "o1")
-                button.onClick.AddListener(delegate { LoadLevel(0); });
+            {
+                button.onClick.RemoveAllListeners();
+                button.onClick.AddListener(delegate { LoadLevel(currentLevel + 1); });
+            }
             else if (button.gameObject.name == "o2")
             {
+                button.onClick.RemoveAllListeners();
                 button.gameObject.SetActive(true);
                 button.onClick.AddListener(delegate { LoadLevel(currentLevel); });
             }
@@ -214,7 +234,7 @@ public class GameManager : MonoBehaviour
                     text.text = "Victory!";
                     break;
                 case "o1Text":
-                    text.text = "To hub";
+                    text.text = "Next Level";
                     break;
                 case "o2Text":
                     text.text = "Retry level";

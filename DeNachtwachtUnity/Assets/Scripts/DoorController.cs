@@ -59,7 +59,7 @@ public class DoorController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.name == "Player")
         {
             isPlayerNearby = true;
             gameManager.Interactable();
@@ -67,7 +67,7 @@ public class DoorController : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.name == "Player")
         {
             isPlayerNearby = false;
             gameManager.Uninteractable();

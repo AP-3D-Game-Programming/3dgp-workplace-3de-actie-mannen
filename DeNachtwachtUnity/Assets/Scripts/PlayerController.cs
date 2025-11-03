@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
             horizontalInput = Input.GetAxis("Horizontal");
             verticalInput = Input.GetAxis("Vertical");
 
-            Vector3 move = new Vector3(verticalInput, 0f, horizontalInput).normalized;
+            Vector3 move = new Vector3(verticalInput, 0f, -horizontalInput).normalized;
 
             if (move != Vector3.zero)
             {
