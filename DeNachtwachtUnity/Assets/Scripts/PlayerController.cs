@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -113,7 +116,6 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(.1f);
         }
     }
-
 
 
     private void OnTriggerEnter(Collider other)
