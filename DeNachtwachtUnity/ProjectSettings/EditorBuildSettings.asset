@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Level2.unity
     guid: 00afd25587ebc7b4085e961f80d527b9
+  - enabled: 1
+    path: Assets/Scenes/WouterTestScene.unity
+    guid: ced3d254526947f4abfd3865bebca69c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
