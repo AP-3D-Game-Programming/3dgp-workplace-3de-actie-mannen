@@ -33,10 +33,12 @@ public class PlayerController : MonoBehaviour
 
     //Reference
     private GameManager gameManager;
+    private Rigidbody playerRb;
 
     void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        playerRb = GetComponent<Rigidbody>();
 
         currentStamina = maxStamina;
     }
@@ -95,7 +97,11 @@ public class PlayerController : MonoBehaviour
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(move), 0.15f);
 
-            transform.Translate(move * currentSpeed * Time.deltaTime, Space.World);
+            playerRb.linearVelocity = (move * currentSpeed * Time.deltaTime);
+        }
+        else
+        {
+            playerRb.linearVelocity = new Vector3(0, playerRb.linearVelocity.y, 0);
         }
     }
 
