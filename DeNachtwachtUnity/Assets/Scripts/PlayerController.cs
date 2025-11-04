@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
         currentStamina = maxStamina;
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (gameManager.gameIsActive)
         {
