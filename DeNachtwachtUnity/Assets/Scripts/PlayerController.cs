@@ -1,13 +1,14 @@
 using NUnit.Framework;
+using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using System.Collections;
-using UnityEngine.UI;
+using UnityEngine.InputSystem.XR;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
-using System;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -33,8 +34,7 @@ public class PlayerController : MonoBehaviour
     //Reference
     private GameManager gameManager;
 
-
-    void Start()
+    void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
@@ -45,18 +45,7 @@ public class PlayerController : MonoBehaviour
     {
         if (gameManager.gameIsActive)
         {
-            //Player Movement
-            horizontalInput = Input.GetAxis("Horizontal");
-            verticalInput = Input.GetAxis("Vertical");
-
-            Vector3 move = new Vector3(verticalInput, 0f, -horizontalInput).normalized;
-
-            if (move != Vector3.zero)
-            {
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(move), 0.15f);
-
-                transform.Translate(move * currentSpeed * Time.deltaTime, Space.World);
-            }
+            HandleMovement();
 
             if (Input.GetKey(KeyCode.LeftShift))
             {
@@ -91,6 +80,22 @@ public class PlayerController : MonoBehaviour
                 isExhausted = true;
                 currentSpeed = 2f;
             }
+        }
+    }
+
+    private void HandleMovement()
+    {
+        //Player Movement
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
+
+        Vector3 move = new Vector3(verticalInput, 0f, -horizontalInput).normalized;
+
+        if (move != Vector3.zero)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(move), 0.15f);
+
+            transform.Translate(move * currentSpeed * Time.deltaTime, Space.World);
         }
     }
 
