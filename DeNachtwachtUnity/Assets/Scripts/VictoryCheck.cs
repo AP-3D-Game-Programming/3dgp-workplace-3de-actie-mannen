@@ -40,4 +40,10 @@ public class VictoryCheck : MonoBehaviour
             gameManager.Uninteractable();
         }
     }
+
+    public void LevelReset()
+    {
+        hasPrize = false;
+        prize.SetActive(true);
+    }
 }

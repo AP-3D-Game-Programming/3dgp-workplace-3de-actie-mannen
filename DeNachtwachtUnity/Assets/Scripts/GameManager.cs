@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
     {
         gameIsActive = false;
         gameplayScreen.gameObject.SetActive(false);
+        player.GetComponent<VictoryCheck>().LevelReset();
         GameOverScreen();
     }
 
