@@ -31,14 +31,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float verticalInput;
 
     //Reference
-    private Rigidbody playerRb;
     private GameManager gameManager;
 
 
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        playerRb = GetComponent<Rigidbody>();
 
         currentStamina = maxStamina;
     }
@@ -123,7 +121,6 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             gameManager.GameOver();
-            playerRb.AddTorque(new Vector3(-1, 0, -1), ForceMode.Impulse);
         }
     }
 }

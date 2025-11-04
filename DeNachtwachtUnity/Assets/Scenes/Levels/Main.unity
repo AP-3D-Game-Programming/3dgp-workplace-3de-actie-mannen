@@ -1147,10 +1147,10 @@ PrefabInstance:
       addedObject: {fileID: 1754692532}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1754692533}
+      addedObject: {fileID: 1754692539}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1754692536}
+      addedObject: {fileID: 1754692540}
   m_SourcePrefab: {fileID: 100100000, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
 --- !u!1 &1754692530 stripped
 GameObject:
@@ -1196,7 +1196,7 @@ MonoBehaviour:
   prize: {fileID: 1746864964}
   start: {fileID: 475187589}
   hasPrize: 0
---- !u!54 &1754692533
+--- !u!54 &1754692539
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1206,7 +1206,7 @@ Rigidbody:
   serializedVersion: 5
   m_Mass: 1
   m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_AngularDamping: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1221,9 +1221,9 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &1754692536
+--- !u!65 &1754692540
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1242,8 +1242,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.94558376, y: 2.6596546, z: 0.66259694}
-  m_Center: {x: 0.0002793755, y: 1.1846986, z: 0.008378859}
+  m_Size: {x: 1.2305778, y: 2.9204683, z: 0.85682464}
+  m_Center: {x: -0.03208386, y: 1.0801163, z: -0.014520415}
 --- !u!1 &1811904297
 GameObject:
   m_ObjectHideFlags: 0
@@ -1620,6 +1620,10 @@ PrefabInstance:
     - target: {fileID: 2437559086316311307, guid: 1def9cd3a5214e445aa631fb37dd3457, type: 3}
       propertyPath: m_Name
       value: BaseScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 2437559086316311307, guid: 1def9cd3a5214e445aa631fb37dd3457, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2875399441016159440, guid: 1def9cd3a5214e445aa631fb37dd3457, type: 3}
       propertyPath: m_Pivot.x
