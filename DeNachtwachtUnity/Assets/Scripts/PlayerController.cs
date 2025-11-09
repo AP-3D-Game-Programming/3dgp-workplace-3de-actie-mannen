@@ -17,25 +17,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float crouchMultiplier = 0.5f;
     [SerializeField] float sprintMultiplier = 2.0f;
     [SerializeField] float currentSpeed;
-
-    //Stamina
-    [SerializeField] Image staminaBar;
-    [SerializeField] float currentStamina;
-    [SerializeField] float maxStamina;
-    [SerializeField] float staminaLoss = 20f;
-    private Coroutine rechargeStamina;
-    [SerializeField] float chargeRateStamina;
-    [SerializeField] bool isExhausted = false;
-
-    //Input
-    [SerializeField] float horizontalInput;
-    [SerializeField] float verticalInput;
-
-    //Reference
-    private GameManager gameManager;
-    private Rigidbody playerRb;
-
-    //Properties
     private float crouchSpeed
     {
         get
@@ -51,10 +32,39 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Stamina
+    [SerializeField] Image staminaBar;
+    [SerializeField] float currentStamina;
+    [SerializeField] float maxStamina;
+    [SerializeField] float staminaLoss = 20f;
+    private Coroutine rechargeStamina;
+    [SerializeField] float chargeRateStamina;
+    [SerializeField] bool isExhausted = false;
+
+    //Crouch options
+    [SerializeField] GameObject standObject;
+    [SerializeField] GameObject crouchObject;
+
+    //Input
+    [SerializeField] float horizontalInput;
+    [SerializeField] float verticalInput;
+
+    //Reference
+    private GameManager gameManager;
+    private Rigidbody playerRb;
+    private BoxCollider playerCollider;
+    private Vector3 standSize;
+    private Vector3 crouchSize;
+
     void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         playerRb = GetComponent<Rigidbody>();
+        playerCollider = GetComponent<BoxCollider>();
+        standSize = standObject.GetComponent<BoxCollider>().size;
+        crouchSize = crouchObject.GetComponent<BoxCollider>().size;
+        standObject.SetActive(false);
+        crouchObject.SetActive(false);
 
         currentStamina = maxStamina;
     }
@@ -68,6 +78,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 currentSpeed = sprintSpeed;
+                playerCollider.size = standSize;
 
                 currentStamina -= staminaLoss * Time.deltaTime;
                 if (currentStamina < 0)
@@ -86,11 +97,12 @@ public class PlayerController : MonoBehaviour
             else if (Input.GetKey(KeyCode.LeftControl))
             {
                 currentSpeed = crouchSpeed;
+                playerCollider.size = crouchSize;
             }
             else
             {
-                
                 currentSpeed = walkSpeed;
+                playerCollider.size = standSize;
             }
 
             if (currentStamina <= 0)
