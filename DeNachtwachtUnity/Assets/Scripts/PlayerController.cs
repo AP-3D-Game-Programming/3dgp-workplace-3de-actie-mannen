@@ -14,8 +14,8 @@ public class PlayerController : MonoBehaviour
 {
     //Speeds
     [SerializeField] float walkSpeed = 4.0f;
-    [SerializeField] float crouchSpeed = 2.0f;
-    [SerializeField] float sprintSpeed = 6.0f;
+    [SerializeField] float crouchMultiplier = 0.5f;
+    [SerializeField] float sprintMultiplier = 2.0f;
     [SerializeField] float currentSpeed;
 
     //Stamina
@@ -34,6 +34,22 @@ public class PlayerController : MonoBehaviour
     //Reference
     private GameManager gameManager;
     private Rigidbody playerRb;
+
+    //Properties
+    private float crouchSpeed
+    {
+        get
+        {
+            return walkSpeed * crouchMultiplier;
+        }
+    }
+    private float sprintSpeed
+    {
+        get
+        {
+            return walkSpeed * sprintMultiplier;
+        }
+    }
 
     void Awake()
     {
@@ -80,7 +96,7 @@ public class PlayerController : MonoBehaviour
             if (currentStamina <= 0)
             {
                 isExhausted = true;
-                currentSpeed = 2f;
+                currentSpeed = crouchSpeed;
             }
         }
     }
