@@ -62,6 +62,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 115816334935015927, guid: 24d769580c7ff5a4481f79c3ef974d98, type: 3}
   m_PrefabInstance: {fileID: 2239390243237009960}
   m_PrefabAsset: {fileID: 0}
+--- !u!108 &7382594606328520998 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 8748197341136370446, guid: 24d769580c7ff5a4481f79c3ef974d98, type: 3}
+  m_PrefabInstance: {fileID: 2239390243237009960}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4956890686920893232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -152,7 +157,7 @@ PrefabInstance:
       addedObject: {fileID: 1214841321481342363}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 69f2b47547d755f4686c77a23a1ccd2f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -4788658561647787979}
+      addedObject: {fileID: 8761239786652975336}
   m_SourcePrefab: {fileID: 100100000, guid: 69f2b47547d755f4686c77a23a1ccd2f, type: 3}
 --- !u!4 &4846102637661242587 stripped
 Transform:
@@ -233,26 +238,19 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 2.9966252, z: 0.89808303}
-  m_Center: {x: 0, y: 1.2604359, z: 0.011923186}
---- !u!65 &-4788658561647787979
-BoxCollider:
+  m_Size: {x: 1, y: 2.76039, z: 0.89808303}
+  m_Center: {x: 0, y: 1.3785535, z: 0.011923186}
+--- !u!114 &8761239786652975336
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5191242998902529633}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58a20e08716a2ad46b9ff5168454c2a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GuardFlashlight
+  spotlight: {fileID: 7382594606328520998}
+  player: {fileID: 0}

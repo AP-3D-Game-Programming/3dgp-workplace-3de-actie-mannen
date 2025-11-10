@@ -21,6 +21,13 @@ public class Patrol : MonoBehaviour
     //State change
     [SerializeField] float sightRange, attackRange;
     bool playerInSight, playerInAttackRange;
+    public bool PlayerInSight 
+    {
+        get 
+        {
+            return playerInSight;
+        }
+    }
 
     private GameManager gameManager;
     private void Awake()
