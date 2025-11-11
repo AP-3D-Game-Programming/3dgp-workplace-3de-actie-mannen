@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
 
     LevelManager lvlManager;
 
-    private string[] levelnames = { "Assets/Scenes/Levels/Hub.unity", "Assets/Scenes/Levels/Level1.unity", "Assets/Scenes/Levels/Level2.unity" };
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,7 +28,11 @@ public class GameManager : MonoBehaviour
         gameStarted = false;
         StartScreen();
         gameplayScreen.gameObject.SetActive(false);
-        
+        foreach (var button in menuScreen.GetComponentsInChildren<Button>())
+        {
+            if (button.gameObject.name == "o3")
+                button.onClick.AddListener(StartGame);
+        }
     }
     
     // Update is called once per frame
@@ -53,7 +56,8 @@ public class GameManager : MonoBehaviour
     
     public void Quit()
     {
-        Application.Quit();
+        SceneManager.LoadScene(0);
+        EditorApplication.isPlaying = false;
     }
 
     public void PauseToggle()
@@ -79,9 +83,9 @@ public class GameManager : MonoBehaviour
         gameIsActive = false;
         // need control for what level can be loaded
         if (currentLevel != -1)
-            await SceneManager.UnloadSceneAsync(levelnames[currentLevel]);
+            await SceneManager.UnloadSceneAsync(currentLevel+1);
         currentLevel = toLoad;
-        await SceneManager.LoadSceneAsync(levelnames[toLoad], LoadSceneMode.Additive);
+        await SceneManager.LoadSceneAsync(currentLevel+1, LoadSceneMode.Additive);
         GameObject.Find("LevelManager").GetComponent<LevelManager>().prepareLevel(player, cube, start);
         gameIsActive = true;
         gameplayScreen.gameObject.SetActive(true);
@@ -95,14 +99,18 @@ public class GameManager : MonoBehaviour
 
     public void Interactable()
     {
-        foreach (var text in gameplayScreen.GetComponents<TextMeshProUGUI>()) {
+        foreach (var text in gameplayScreen.GetComponentsInChildren<TextMeshProUGUI>(true))
+        {
             if (text.gameObject.name == "interact")
+            {
                 text.gameObject.SetActive(true);
+
+            }
         }
     }
     public void Uninteractable()
     {
-        foreach (var text in gameplayScreen.GetComponents<TextMeshProUGUI>())
+        foreach (var text in gameplayScreen.GetComponentsInChildren<TextMeshProUGUI>(true))
         {
             if (text.gameObject.name == "interact")
                 text.gameObject.SetActive(false);

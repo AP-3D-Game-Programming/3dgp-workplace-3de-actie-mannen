@@ -478,6 +478,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasStart (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2437559086316311307, guid: 1def9cd3a5214e445aa631fb37dd3457, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2875399441016159440, guid: 1def9cd3a5214e445aa631fb37dd3457, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -713,9 +717,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   player: {fileID: 1870636562}
+  cube: {fileID: 0}
+  start: {fileID: 0}
   menuScreen: {fileID: 1796285026}
   gameplayScreen: {fileID: 0}
   gameIsActive: 0
+  currentLevel: 0
 --- !u!223 &1796285026 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 2588108583771975926, guid: 1def9cd3a5214e445aa631fb37dd3457, type: 3}
@@ -755,8 +762,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   walkSpeed: 4
-  crouchSpeed: 2
-  sprintSpeed: 6
+  crouchMultiplier: 0.5
+  sprintMultiplier: 2
   currentSpeed: 0
   staminaBar: {fileID: 0}
   currentStamina: 0
@@ -764,6 +771,8 @@ MonoBehaviour:
   staminaLoss: 20
   chargeRateStamina: 0
   isExhausted: 0
+  standObject: {fileID: 0}
+  crouchObject: {fileID: 0}
   horizontalInput: 0
   verticalInput: 0
 --- !u!136 &1870636564
