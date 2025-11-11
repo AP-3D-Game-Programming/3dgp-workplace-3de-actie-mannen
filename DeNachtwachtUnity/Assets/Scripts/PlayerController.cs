@@ -116,8 +116,8 @@ public class PlayerController : MonoBehaviour
     private void HandleMovement()
     {
         //Player Movement
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
 
         Vector3 move = new Vector3(verticalInput, 0f, -horizontalInput).normalized;
 
