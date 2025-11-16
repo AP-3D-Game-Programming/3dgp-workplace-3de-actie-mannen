@@ -5,6 +5,7 @@ public class VictoryCheck : MonoBehaviour
     [SerializeField] GameObject prize;
     [SerializeField] GameObject start;
     [SerializeField] bool hasPrize = false;
+    private bool isNear = false;
     private GameManager gameManager;
 
     private void Start()
@@ -12,11 +13,27 @@ public class VictoryCheck : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
+    private void Update()
+    {
+        if (gameManager.gameIsActive)
+        {
+            if (isNear && Input.GetKeyDown(KeyCode.E))
+            {
+                hasPrize = true;
+                isNear = false;
+                prize.SetActive(false);
+                gameManager.Uninteractable();
+            }
+
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.Equals(prize))
         {
-            gameManager.Interactable();
+            gameManager.Interactable(1);
+            isNear = true;
         }
         if (other.gameObject.Equals(start) && hasPrize)
         {
@@ -25,19 +42,13 @@ public class VictoryCheck : MonoBehaviour
             gameManager.Victory();
         }
     }
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.Equals(prize) && Input.GetKeyDown(KeyCode.E))
-        {
-            hasPrize = true;
-            prize.SetActive(false);
-        }
-    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.Equals(prize))
         {
             gameManager.Uninteractable();
+            isNear = false;
         }
     }
 

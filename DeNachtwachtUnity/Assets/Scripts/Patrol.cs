@@ -20,6 +20,7 @@ public class Patrol : MonoBehaviour
 
     //State change
     [SerializeField] float sightRange, attackRange;
+    private float actualSightRange;
     bool playerInSight, playerInAttackRange;
     public bool PlayerInSight 
     {
@@ -40,17 +41,24 @@ public class Patrol : MonoBehaviour
 
     private void Update()
     {
-        playerInSight = Physics.CheckSphere(transform.position, sightRange, playerLayer);
+        if (player.GetComponent<PlayerController>().isCrouching) 
+            actualSightRange = sightRange / 2;
+        else 
+            actualSightRange = sightRange;
+
+        playerInSight = Physics.CheckSphere(transform.position, actualSightRange, playerLayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
 
         if (!playerInSight && !playerInAttackRange) Patrolling();
-        if (playerInSight && !playerInAttackRange) Chase();
+        if (playerInSight/* && !playerInAttackRange*/) Chase();
         //if (playerInSight && playerInAttackRange) Attack();
 
     }
 
     private void Chase()
     {
+        agent.speed = 10f;
+        agent.angularSpeed = 360f;
         agent.SetDestination(player.transform.position);
     }
 
@@ -58,8 +66,10 @@ public class Patrol : MonoBehaviour
 
     private void Patrolling()
     {
-        if (gameManager.gameIsActive)
+        if (gameManager.gameIsActive && waypoints.Length != 0)
         {
+            agent.speed = 3.5f;
+            agent.angularSpeed = 120f;
             if (_waiting)
             {
                 _waitCounter += Time.deltaTime;

@@ -94,7 +94,7 @@ public class DoorController : MonoBehaviour
         if (other.gameObject.name == "Player")
         {
             isPlayerNearby = true;
-            gameManager.Interactable();
+            gameManager.Interactable(0);
         }
     }
     private void OnTriggerExit(Collider other)

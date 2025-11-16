@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public bool gameIsActive;
     private bool gameStarted;
     [SerializeField] int currentLevel;
+    private int singleUse = 0;
 
     LevelManager lvlManager;
 
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
             if (button.gameObject.name == "o3")
                 button.onClick.AddListener(StartGame);
         }
+        Uninteractable();
     }
     
     // Update is called once per frame
@@ -82,9 +84,14 @@ public class GameManager : MonoBehaviour
         menuScreen.gameObject.SetActive(false);
         gameIsActive = false;
         // need control for what level can be loaded
-        if (currentLevel != -1)
+        if (currentLevel != -1 && currentLevel != 3)
             await SceneManager.UnloadSceneAsync(currentLevel+1);
         currentLevel = toLoad;
+        if (currentLevel == 3)
+        {
+            EndScreen();
+            return;
+        }
         await SceneManager.LoadSceneAsync(currentLevel+1, LoadSceneMode.Additive);
         GameObject.Find("LevelManager").GetComponent<LevelManager>().prepareLevel(player, cube, start);
         gameIsActive = true;
@@ -97,15 +104,16 @@ public class GameManager : MonoBehaviour
         VictoryScreen();
     }
 
-    public void Interactable()
+    public void Interactable(int index)
     {
+        if (index >= singleUse) 
+            singleUse++;
+        else 
+            return;
         foreach (var text in gameplayScreen.GetComponentsInChildren<TextMeshProUGUI>(true))
         {
             if (text.gameObject.name == "interact")
-            {
                 text.gameObject.SetActive(true);
-
-            }
         }
     }
     public void Uninteractable()
@@ -120,7 +128,7 @@ public class GameManager : MonoBehaviour
     private void StartScreen()
     {
         menuScreen.gameObject.SetActive(true);
-        foreach (var button in menuScreen.GetComponentsInChildren<Button>())
+        foreach (var button in menuScreen.GetComponentsInChildren<Button>(true))
         {
             if (button.gameObject.name == "o1") { 
                 button.onClick.RemoveAllListeners();
@@ -148,7 +156,7 @@ public class GameManager : MonoBehaviour
     private void PauseScreen()
     {
         menuScreen.gameObject.SetActive(true);
-        foreach (var button in menuScreen.GetComponentsInChildren<Button>())
+        foreach (var button in menuScreen.GetComponentsInChildren<Button>(true))
         {
             if (button.gameObject.name == "o1")
             {
@@ -158,13 +166,8 @@ public class GameManager : MonoBehaviour
             else if (button.gameObject.name == "o2")
             {
                 button.onClick.RemoveAllListeners();
-                if (currentLevel != 0)
-                {
-                    button.gameObject.SetActive(true);
-                    button.onClick.AddListener(delegate { LoadLevel(0); });
-                }
-                else
-                    button.gameObject.SetActive(false);
+                button.gameObject.SetActive(true);
+                button.onClick.AddListener(delegate { LoadLevel(currentLevel); });
             }
         }
         foreach (var text in menuScreen.GetComponentsInChildren<TextMeshProUGUI>())
@@ -178,7 +181,7 @@ public class GameManager : MonoBehaviour
                     text.text = "Continue";
                     break;
                 case "o2Text":
-                    text.text = "Back to hub";
+                    text.text = "Reset level";
                     break;
             }
         }
@@ -187,7 +190,7 @@ public class GameManager : MonoBehaviour
     private void GameOverScreen()
     {
         menuScreen.gameObject.SetActive(true);
-        foreach (var button in menuScreen.GetComponentsInChildren<Button>())
+        foreach (var button in menuScreen.GetComponentsInChildren<Button>(true))
         {
             if (button.gameObject.name == "o1")
             {
@@ -212,7 +215,7 @@ public class GameManager : MonoBehaviour
                     text.text = "Retry";
                     break;
                 case "o2Text":
-                    text.text = "Exit level";
+                    text.text = "Restart game";
                     break;
             }
         }
@@ -221,7 +224,7 @@ public class GameManager : MonoBehaviour
     private void VictoryScreen()
     {
         menuScreen.gameObject.SetActive(true);
-        foreach (var button in menuScreen.GetComponentsInChildren<Button>())
+        foreach (var button in menuScreen.GetComponentsInChildren<Button>(true))
         {
             if (button.gameObject.name == "o1")
             {
@@ -247,6 +250,36 @@ public class GameManager : MonoBehaviour
                     break;
                 case "o2Text":
                     text.text = "Retry level";
+                    break;
+            }
+        }
+    }
+
+    private void EndScreen()
+    {
+        menuScreen.gameObject.SetActive(true);
+        foreach (var button in menuScreen.GetComponentsInChildren<Button>(true))
+        {
+            if (button.gameObject.name == "o1")
+            {
+                button.onClick.RemoveAllListeners();
+                button.onClick.AddListener(delegate { LoadLevel(0); });
+            }
+            else if (button.gameObject.name == "o2")
+            {
+                button.onClick.RemoveAllListeners();
+                button.gameObject.SetActive(false);
+            }
+        }
+        foreach (var text in menuScreen.GetComponentsInChildren<TextMeshProUGUI>())
+        {
+            switch (text.gameObject.name)
+            {
+                case "Title":
+                    text.text = "You beat the game!";
+                    break;
+                case "o1Text":
+                    text.text = "Restart game";
                     break;
             }
         }

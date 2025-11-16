@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
     private BoxCollider playerCollider;
     private Vector3 standSize;
     private Vector3 crouchSize;
+    public bool isCrouching = false;
 
     void Awake()
     {
@@ -92,17 +93,19 @@ public class PlayerController : MonoBehaviour
                     StopCoroutine(rechargeStamina);
                 }
                 rechargeStamina = StartCoroutine(RechargeStamina());
-                
+                isCrouching = false;
             }
             else if (Input.GetKey(KeyCode.LeftControl))
             {
                 currentSpeed = crouchSpeed;
                 playerCollider.size = crouchSize;
+                isCrouching = true;
             }
             else
             {
                 currentSpeed = walkSpeed;
                 playerCollider.size = standSize;
+                isCrouching = false;
             }
 
             if (currentStamina <= 0)
