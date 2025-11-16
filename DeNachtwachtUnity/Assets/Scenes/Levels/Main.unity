@@ -460,7 +460,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 20}
-  m_SizeDelta: {x: 300, y: 50}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &746158666
 MonoBehaviour:
@@ -516,7 +516,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1285,6 +1285,7 @@ MonoBehaviour:
   crouchObject: {fileID: 553578965}
   horizontalInput: 0
   verticalInput: 0
+  isCrouching: 0
 --- !u!114 &1754692532
 MonoBehaviour:
   m_ObjectHideFlags: 0

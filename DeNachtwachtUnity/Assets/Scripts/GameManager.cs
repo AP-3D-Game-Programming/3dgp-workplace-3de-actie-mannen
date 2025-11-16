@@ -104,16 +104,19 @@ public class GameManager : MonoBehaviour
         VictoryScreen();
     }
 
-    public void Interactable(int index)
+    public void Interactable(int index, string button, string action)
     {
-        if (index >= singleUse) 
+        if (index >= singleUse)
             singleUse++;
         else 
             return;
         foreach (var text in gameplayScreen.GetComponentsInChildren<TextMeshProUGUI>(true))
         {
             if (text.gameObject.name == "interact")
+            {
                 text.gameObject.SetActive(true);
+                text.text = $"press {button} to {action}";
+            }
         }
     }
     public void Uninteractable()

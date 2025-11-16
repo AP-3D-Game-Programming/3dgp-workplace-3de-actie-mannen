@@ -32,7 +32,7 @@ public class VictoryCheck : MonoBehaviour
     {
         if (other.gameObject.Equals(prize))
         {
-            gameManager.Interactable(1);
+            gameManager.Interactable(3, "E", "pick up");
             isNear = true;
         }
         if (other.gameObject.Equals(start) && hasPrize)
