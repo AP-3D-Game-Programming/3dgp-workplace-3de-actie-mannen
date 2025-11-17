@@ -164,6 +164,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 69f2b47547d755f4686c77a23a1ccd2f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5207118927549321870}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 69f2b47547d755f4686c77a23a1ccd2f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3924695197946885844}
   m_SourcePrefab: {fileID: 100100000, guid: 69f2b47547d755f4686c77a23a1ccd2f, type: 3}
 --- !u!4 &4846102637661242587 stripped
 Transform:
@@ -198,6 +201,7 @@ MonoBehaviour:
   _waitTime: 1
   sightRange: 0
   attackRange: 0
+  fieldOfView: 45
 --- !u!54 &-6773815929643984850
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -302,3 +306,15 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-3924695197946885844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5191242998902529633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6856a9dabfe637747bc17207fcf2062d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GuardMovement
