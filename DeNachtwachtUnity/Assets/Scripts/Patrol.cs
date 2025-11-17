@@ -36,8 +36,6 @@ public class Patrol : MonoBehaviour
     private void Update()
     {
 
-        CheckCrouch();
-
         if (PlayerInSightRange() || PlayerInAttackRange())
             Chase();
         else
