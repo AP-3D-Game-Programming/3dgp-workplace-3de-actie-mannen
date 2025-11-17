@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,23 +16,14 @@ public class Patrol : MonoBehaviour
     private bool _waiting = false;
 
     //State change
-    [SerializeField] float sightRange, attackRange;
+    [SerializeField] float sightRange = 3f, attackRange = 2f;
+    [SerializeField] float fieldOfView = 45f;
     private float actualSightRange;
     bool playerInSight, playerInAttack;
-    public bool PlayerInSight
-    {
-        get 
-        {
-            return playerInSight;
-        }
-    }
-    public bool PlayerInAttack
-    {
-        get
-        {
-            return playerInAttack;
-        }
-    }
+    public bool PlayerInSight => playerInSight;
+    public bool PlayerInAttack => playerInAttack;
+
+
     private GameManager gameManager;
     private void Awake()
     {
@@ -57,20 +45,44 @@ public class Patrol : MonoBehaviour
 
     }
 
-    private void CheckCrouch()
+    private float CheckCrouch()
     {
         if (player.GetComponent<PlayerController>().isCrouching)
-            actualSightRange = sightRange / 2;
+            actualSightRange = (float)(sightRange / 2.5);
         else
             actualSightRange = sightRange;
+        return actualSightRange;
     }
 
     private bool PlayerInSightRange()
     {
-        playerInSight = Physics.CheckSphere(transform.position, actualSightRange, playerLayer);
-        if (playerInSight )
-            return true;
+        Vector3 directionToPlayer = player.transform.position - transform.position;
+        float distanceToPlayer = directionToPlayer.magnitude;
+
+        
+        if (distanceToPlayer <= CheckCrouch())
+        {
+            
+            float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
+            if (angleToPlayer <= 50f)
+            {
+                
+                if (!Physics.Raycast(transform.position + Vector3.up, directionToPlayer.normalized, distanceToPlayer, groundLayer))
+                {
+                    playerInSight = true;
+                    return true;
+                }
+            }
+        }
+
+        // Player not in sight
+        playerInSight = false;
         return false;
+
+        //playerInSight = Physics.CheckSphere(transform.position, actualSightRange, playerLayer);
+        //if (playerInSight)
+        //    return true;
+        //return false;
     }
 
     private bool PlayerInAttackRange()
@@ -86,8 +98,6 @@ public class Patrol : MonoBehaviour
         agent.angularSpeed = 360f;
         agent.SetDestination(player.transform.position);
     }
-
-    //private void Attack()
 
     private void Patrolling()
     {
@@ -111,21 +121,6 @@ public class Patrol : MonoBehaviour
 
                 _currentWaypointIndex = (_currentWaypointIndex + 1) % waypoints.Length;
             }
-///Redundant code based on just waypoints and not on MavMesh
-            //Transform wp = waypoints[_currentWaypointIndex];
-            //if (Vector3.Distance(transform.position, wp.position) < 0.01f)
-            //{
-            //    transform.position = wp.position;
-            //    _waitCounter = 0f;
-            //    _waiting = true;
-
-            //    _currentWaypointIndex = (_currentWaypointIndex + 1) % waypoints.Length;
-            //}
-            //else
-            //{
-            //    transform.position = Vector3.MoveTowards(transform.position, wp.position, _speed * Time.deltaTime);
-            //    transform.LookAt(wp.position);
-            //}
         }
     }
 }
