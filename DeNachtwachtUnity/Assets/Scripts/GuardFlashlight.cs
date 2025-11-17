@@ -9,7 +9,7 @@ public class GuardFlashlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<Patrol>().PlayerInSight)
+        if (GetComponent<Patrol>().PlayerInSight || GetComponent<Patrol>().PlayerInAttack)
         {
             spotlight.color = Color.red;
         }
