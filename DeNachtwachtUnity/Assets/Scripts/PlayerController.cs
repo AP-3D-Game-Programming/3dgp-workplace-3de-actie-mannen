@@ -164,4 +164,12 @@ public class PlayerController : MonoBehaviour
             gameManager.GameOver();
         }
     }
+
+    public void ResetA()
+    {
+        currentStamina = maxStamina;
+        playerCollider.size = standSize;
+        isExhausted = false;
+        isCrouching = false;
+    }
 }

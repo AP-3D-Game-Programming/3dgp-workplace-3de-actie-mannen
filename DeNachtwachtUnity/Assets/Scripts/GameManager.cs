@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Linq;
 using System.Threading.Tasks;
 using TMPro;
@@ -22,7 +24,7 @@ public class GameManager : MonoBehaviour
     LevelManager lvlManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         currentLevel = -1;
         gameIsActive = false;
@@ -76,25 +78,33 @@ public class GameManager : MonoBehaviour
         gameIsActive = false;
         gameplayScreen.gameObject.SetActive(false);
         player.GetComponent<VictoryCheck>().LevelReset();
+        player.GetComponent<PlayerController>().ResetA();
         GameOverScreen();
+        
     }
 
     public async void LoadLevel(int toLoad)
     {
         menuScreen.gameObject.SetActive(false);
         gameIsActive = false;
-        if (toLoad == 0) singleUse = 0;
+        if (toLoad == 0)
+        {
+            singleUse = 0;
+            await ObjectiveScreenAsync();
+        }
         // need control for what level can be loaded
-        if (currentLevel != -1 && currentLevel != 3)
+        if (currentLevel != -1 && currentLevel != SceneManager.sceneCountInBuildSettings - 1)
             await SceneManager.UnloadSceneAsync(currentLevel+1);
         currentLevel = toLoad;
-        if (currentLevel == 3)
+        
+        if (currentLevel == SceneManager.sceneCountInBuildSettings - 1)
         {
             EndScreen();
             return;
         }
         await SceneManager.LoadSceneAsync(currentLevel+1, LoadSceneMode.Additive);
         GameObject.Find("LevelManager").GetComponent<LevelManager>().prepareLevel(player, cube, start);
+        player.GetComponent<PlayerController>().ResetA();
         gameIsActive = true;
         gameplayScreen.gameObject.SetActive(true);
     }
@@ -102,6 +112,7 @@ public class GameManager : MonoBehaviour
     public void Victory()
     {
         gameIsActive = false;
+        player.GetComponent<PlayerController>().ResetA();
         VictoryScreen();
     }
 
@@ -288,5 +299,21 @@ public class GameManager : MonoBehaviour
                     break;
             }
         }
+    }
+
+    private async Task ObjectiveScreenAsync()
+    {
+        menuScreen.gameObject.SetActive(true);
+
+        foreach (var comp in menuScreen.GetComponentsInChildren<Component>(true))
+            comp.gameObject.SetActive(comp.gameObject.name == "intro" || comp.gameObject.name == "BaseScreen" || comp.gameObject.name == "Background");
+
+        // Wait asynchronously (non-blocking)
+        await Task.Delay(3000);
+
+        foreach (var comp in menuScreen.GetComponentsInChildren<Component>(true))
+            comp.gameObject.SetActive(comp.gameObject.name != "intro");
+
+        menuScreen.gameObject.SetActive(false);
     }
 }

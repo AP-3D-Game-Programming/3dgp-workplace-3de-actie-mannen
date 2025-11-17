@@ -47,7 +47,6 @@ public class VictoryCheck : MonoBehaviour
     {
         if (other.gameObject.Equals(prize))
         {
-            gameManager.Uninteractable(4);
             isNear = false;
         }
     }

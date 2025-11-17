@@ -9,15 +9,15 @@ public class SprintTutorial : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+            gameManager.Uninteractable(1);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Player")
             gameManager.Interactable(0, "LSHIFT", "sprint");
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.name == "Player")
-            gameManager.Uninteractable(1);
     }
 }

@@ -38,6 +38,7 @@ public class DoorController : MonoBehaviour
         {
             if (currentCoroutine != null) StopCoroutine(currentCoroutine);
             currentCoroutine = StartCoroutine(ToggleDoor());
+            gameManager.Uninteractable(2);
         }
     }
 
@@ -101,7 +102,6 @@ public class DoorController : MonoBehaviour
         if (other.gameObject.name == "Player")
         {
             isPlayerNearby = false;
-            gameManager.Uninteractable(2);
         }
     }
 
