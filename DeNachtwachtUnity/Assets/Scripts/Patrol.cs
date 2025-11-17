@@ -21,15 +21,21 @@ public class Patrol : MonoBehaviour
     //State change
     [SerializeField] float sightRange, attackRange;
     private float actualSightRange;
-    bool playerInSight, playerInAttackRange;
-    public bool PlayerInSight 
+    bool playerInSight, playerInAttack;
+    public bool PlayerInSight
     {
         get 
         {
             return playerInSight;
         }
     }
-
+    public bool PlayerInAttack
+    {
+        get
+        {
+            return playerInAttack;
+        }
+    }
     private GameManager gameManager;
     private void Awake()
     {
@@ -41,20 +47,39 @@ public class Patrol : MonoBehaviour
 
     private void Update()
     {
-        if (player.GetComponent<PlayerController>().isCrouching) 
-            actualSightRange = sightRange / 2;
-        else 
-            actualSightRange = sightRange;
 
-        playerInSight = Physics.CheckSphere(transform.position, actualSightRange, playerLayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
+        CheckCrouch();
 
-        if (!playerInSight && !playerInAttackRange) Patrolling();
-        if (playerInSight/* && !playerInAttackRange*/) Chase();
-        //if (playerInSight && playerInAttackRange) Attack();
+        if (PlayerInSightRange() || PlayerInAttackRange())
+            Chase();
+        else
+            Patrolling();
 
     }
 
+    private void CheckCrouch()
+    {
+        if (player.GetComponent<PlayerController>().isCrouching)
+            actualSightRange = sightRange / 2;
+        else
+            actualSightRange = sightRange;
+    }
+
+    private bool PlayerInSightRange()
+    {
+        playerInSight = Physics.CheckSphere(transform.position, actualSightRange, playerLayer);
+        if (playerInSight )
+            return true;
+        return false;
+    }
+
+    private bool PlayerInAttackRange()
+    {
+        playerInAttack = Physics.CheckSphere(transform.position, attackRange, playerLayer);
+        if (playerInAttack)
+            return true;
+        return false;
+    }
     private void Chase()
     {
         agent.speed = 10f;
