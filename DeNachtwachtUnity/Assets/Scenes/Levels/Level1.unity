@@ -489,6 +489,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 718150954947392885, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 718150954947392885, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+      propertyPath: playerLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 718150954947392885, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
       propertyPath: waypoints.Array.size
       value: 4
       objectReference: {fileID: 0}
