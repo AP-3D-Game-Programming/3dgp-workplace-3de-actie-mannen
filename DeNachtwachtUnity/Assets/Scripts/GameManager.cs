@@ -1,7 +1,7 @@
 using System.Linq;
+using System.Threading.Tasks;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -27,14 +27,15 @@ public class GameManager : MonoBehaviour
         currentLevel = -1;
         gameIsActive = false;
         gameStarted = false;
+        singleUse = 0;
         StartScreen();
         gameplayScreen.gameObject.SetActive(false);
         foreach (var button in menuScreen.GetComponentsInChildren<Button>())
         {
             if (button.gameObject.name == "o3")
-                button.onClick.AddListener(StartGame);
+                button.onClick.AddListener(Quit);
         }
-        Uninteractable();
+        Uninteractable(4);
     }
     
     // Update is called once per frame
@@ -56,10 +57,9 @@ public class GameManager : MonoBehaviour
         LoadLevel(0);
     }
     
-    public void Quit()
+    public async void Quit()
     {
-        SceneManager.LoadScene(0);
-        EditorApplication.isPlaying = false;
+        await SceneManager.LoadSceneAsync(0);
     }
 
     public void PauseToggle()
@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
     {
         menuScreen.gameObject.SetActive(false);
         gameIsActive = false;
+        if (toLoad == 0) singleUse = 0;
         // need control for what level can be loaded
         if (currentLevel != -1 && currentLevel != 3)
             await SceneManager.UnloadSceneAsync(currentLevel+1);
@@ -119,8 +120,9 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public void Uninteractable()
+    public void Uninteractable(int index)
     {
+        if (index < singleUse) return;
         foreach (var text in gameplayScreen.GetComponentsInChildren<TextMeshProUGUI>(true))
         {
             if (text.gameObject.name == "interact")

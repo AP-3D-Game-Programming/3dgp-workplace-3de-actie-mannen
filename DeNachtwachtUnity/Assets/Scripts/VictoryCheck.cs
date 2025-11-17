@@ -22,7 +22,7 @@ public class VictoryCheck : MonoBehaviour
                 hasPrize = true;
                 isNear = false;
                 prize.SetActive(false);
-                gameManager.Uninteractable();
+                gameManager.Uninteractable(4);
             }
 
         }
@@ -47,7 +47,7 @@ public class VictoryCheck : MonoBehaviour
     {
         if (other.gameObject.Equals(prize))
         {
-            gameManager.Uninteractable();
+            gameManager.Uninteractable(4);
             isNear = false;
         }
     }

@@ -1,6 +1,3 @@
-using Fab;
-using Unity.Play.Publisher.Editor;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
 public class GuardFlashlight : MonoBehaviour
@@ -8,10 +5,6 @@ public class GuardFlashlight : MonoBehaviour
     public Light spotlight;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()

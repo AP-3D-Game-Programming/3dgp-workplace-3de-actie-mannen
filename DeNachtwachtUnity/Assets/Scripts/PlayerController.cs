@@ -2,7 +2,6 @@ using NUnit.Framework;
 using System;
 using System.Collections;
 using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.XR;
@@ -95,7 +94,7 @@ public class PlayerController : MonoBehaviour
                 rechargeStamina = StartCoroutine(RechargeStamina());
                 isCrouching = false;
             }
-            else if (Input.GetKey(KeyCode.LeftControl))
+            else if (Input.GetKey(KeyCode.C))
             {
                 currentSpeed = crouchSpeed;
                 playerCollider.size = crouchSize;

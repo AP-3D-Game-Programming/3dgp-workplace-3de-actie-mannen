@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class DoorController : MonoBehaviour
@@ -102,7 +101,7 @@ public class DoorController : MonoBehaviour
         if (other.gameObject.name == "Player")
         {
             isPlayerNearby = false;
-            gameManager.Uninteractable();
+            gameManager.Uninteractable(2);
         }
     }
 

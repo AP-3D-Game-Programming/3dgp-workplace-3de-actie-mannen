@@ -18,6 +18,6 @@ public class SprintTutorial : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.name == "Player")
-            gameManager.Uninteractable();
+            gameManager.Uninteractable(1);
     }
 }
