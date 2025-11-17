@@ -46,7 +46,7 @@ public class Patrol : MonoBehaviour
     private float CheckCrouch()
     {
         if (player.GetComponent<PlayerController>().isCrouching)
-            actualSightRange = (float)(sightRange / 2.5);
+            actualSightRange = (float)(sightRange / 2);
         else
             actualSightRange = sightRange;
         return actualSightRange;

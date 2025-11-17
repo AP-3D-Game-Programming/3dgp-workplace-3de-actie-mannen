@@ -193,5 +193,6 @@ public class PlayerController : MonoBehaviour
         playerCollider.size = standSize;
         isExhausted = false;
         isCrouching = false;
+        staminaBar.fillAmount = 1;
     }
 }
