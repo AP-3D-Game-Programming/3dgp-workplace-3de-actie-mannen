@@ -313,6 +313,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5607612774322178637}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2325658468235060782}
   m_SourcePrefab: {fileID: 100100000, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
 --- !u!1 &4970348933305077549 stripped
 GameObject:
@@ -345,6 +348,9 @@ MonoBehaviour:
   crouchObject: {fileID: 858713444323560358}
   horizontalInput: 0
   verticalInput: 0
+  isCrouching: 0
+  speed: 0
+  animator: {fileID: 2325658468235060782}
 --- !u!114 &1368922166262025778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,6 +427,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerFlashlight
   light: {fileID: 3619004603879238773}
+--- !u!95 &2325658468235060782
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4970348933305077549}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 31da794110ce7df46a9d14b6d8d304f9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &5742629014830601623 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
