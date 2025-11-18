@@ -82,7 +82,7 @@ public class Patrol : MonoBehaviour
         Vector3 directionToPlayer = player.transform.position - transform.position;
         float distanceToPlayer = directionToPlayer.magnitude;
 
-        bool playerInAttack = Physics.CheckSphere(transform.position, attackRange, playerLayer);
+        playerInAttack = Physics.CheckSphere(transform.position, attackRange, playerLayer);
         bool hasLOS = HasLineOfSight(directionToPlayer, distanceToPlayer);
 
         playerInAttack = playerInAttack && hasLOS;
