@@ -89,15 +89,21 @@ public class Patrol : MonoBehaviour
         return playerInAttack;
     }
 
-    private bool HasLineOfSight(Vector3 directionToPlayer, float distanceToPlayer)
+private bool HasLineOfSight(Vector3 directionToPlayer, float distanceToPlayer)
+{
+    Vector3 origin = transform.position + Vector3.up;
+    RaycastHit hit;
+
+    if (Physics.Raycast(origin, directionToPlayer.normalized, out hit, distanceToPlayer))
     {
-        return !Physics.Raycast(
-            transform.position + Vector3.up,
-            directionToPlayer.normalized,
-            distanceToPlayer,
-            groundLayer
-        );
+        if (hit.collider.gameObject == player)
+            return true;
+        else
+            return false;
     }
+
+    return false;
+}
 
     private void Chase()
     {
