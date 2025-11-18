@@ -7,15 +7,16 @@ public class CrouchTutorial : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+            gameManager.Uninteractable(3);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Player")
             gameManager.Interactable(2, "C", "sneak");
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.name == "Player")
-            gameManager.Uninteractable(3);
     }
 }

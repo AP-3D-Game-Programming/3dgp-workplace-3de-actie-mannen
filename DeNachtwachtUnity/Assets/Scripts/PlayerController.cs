@@ -56,6 +56,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 crouchSize;
     public bool isCrouching = false;
 
+    //Animation
+    public float speed = 0f;
+    public Animator animator;
+
     void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -112,6 +116,24 @@ public class PlayerController : MonoBehaviour
                 isExhausted = true;
                 currentSpeed = crouchSpeed;
             }
+
+            Vector3 horizontalVel = new Vector3(playerRb.linearVelocity.x, 0, playerRb.linearVelocity.z);
+
+            float moveSpeed = horizontalVel.magnitude;
+
+            if (moveSpeed < 0.1f)
+            {
+                speed = 0;
+            }
+            else if (currentSpeed == walkSpeed)
+            {
+                speed = 1;
+            }
+            else if (currentSpeed == walkSpeed * sprintMultiplier)
+            {
+                speed = 5;
+            }
+            animator.SetFloat("Speed", speed);
         }
     }
 
@@ -163,5 +185,14 @@ public class PlayerController : MonoBehaviour
         {
             gameManager.GameOver();
         }
+    }
+
+    public void ResetA()
+    {
+        currentStamina = maxStamina;
+        playerCollider.size = standSize;
+        isExhausted = false;
+        isCrouching = false;
+        staminaBar.fillAmount = 1;
     }
 }

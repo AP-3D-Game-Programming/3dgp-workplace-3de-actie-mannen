@@ -943,6 +943,37 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &77589615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 77589616}
+  m_Layer: 0
+  m_Name: Patrol Point 3 Guard 1 (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &77589616
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77589615}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11.6, y: -0.006504059, z: -44.5}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &82191595
 GameObject:
   m_ObjectHideFlags: 0
@@ -1011,7 +1042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.7
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1019,7 +1050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.6
+      value: -46.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1065,6 +1096,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -5017971254852617305, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1085,9 +1120,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 31da794110ce7df46a9d14b6d8d304f9, type: 2}
     - target: {fileID: 8303906797054990637, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891244130364874969, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 8908311948669537042, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
       propertyPath: m_Layer
@@ -1118,6 +1161,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 93624596}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 93624600}
   m_SourcePrefab: {fileID: 100100000, guid: 9e41f8d50c89cda499ab5b8aa3467b3b, type: 3}
 --- !u!1 &93624594 stripped
 GameObject:
@@ -1218,6 +1264,31 @@ MonoBehaviour:
   crouchObject: {fileID: 1942322227}
   horizontalInput: 0
   verticalInput: 0
+  isCrouching: 0
+  speed: 0
+  animator: {fileID: 93624600}
+--- !u!95 &93624600
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93624594}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 31da794110ce7df46a9d14b6d8d304f9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &101741256 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3560638563014668520, guid: d21adf38c48e54d46991d72d2c458ea5, type: 3}
@@ -2839,6 +2910,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eee44ece13a542540960551e4ff43509, type: 3}
+--- !u!1 &395555652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 395555653}
+  m_Layer: 0
+  m_Name: Patrol Point 3 Guard 1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &395555653
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395555652}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 14.5, y: -0.006504059, z: -47.5}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &397574680 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7665392547194361231, guid: eee44ece13a542540960551e4ff43509, type: 3}
@@ -3165,7 +3267,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GuardFlashlight
   spotlight: {fileID: 2143900063}
-  player: {fileID: 93624595}
 --- !u!1001 &431831421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5556,7 +5657,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GuardFlashlight
   spotlight: {fileID: 613776757}
-  player: {fileID: 93624595}
 --- !u!4 &902481467 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 123394648199434470, guid: a5f229cebf3c50445b5589fe3ed09d43, type: 3}
@@ -6304,7 +6404,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GuardFlashlight
   spotlight: {fileID: 108072586}
-  player: {fileID: 93624595}
 --- !u!1001 &1016250560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6727,6 +6826,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7665392547194361231, guid: eee44ece13a542540960551e4ff43509, type: 3}
   m_PrefabInstance: {fileID: 1731898857}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1136788400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1136788401}
+  m_Layer: 0
+  m_Name: Patrol Point 3 Guard 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1136788401
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136788400}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 13.9, y: -0.006504059, z: -50.8}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1145258369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8063,6 +8193,45 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1407604434 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5191242998902529633, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+  m_PrefabInstance: {fileID: 1536630164}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1407604442
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407604434}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6ea74cdb81c8e524d94e741ed60e60e1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1407604450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407604434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6856a9dabfe637747bc17207fcf2062d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GuardMovement
 --- !u!4 &1418229366 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7665392547194361231, guid: eee44ece13a542540960551e4ff43509, type: 3}
@@ -8698,6 +8867,85 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eee44ece13a542540960551e4ff43509, type: 3}
+--- !u!1001 &1536630164
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 718150954947392885, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+      propertyPath: waypoints.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 718150954947392885, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+      propertyPath: 'waypoints.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1136788401}
+    - target: {fileID: 718150954947392885, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+      propertyPath: 'waypoints.Array.data[1]'
+      value: 
+      objectReference: {fileID: 395555653}
+    - target: {fileID: 718150954947392885, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+      propertyPath: 'waypoints.Array.data[2]'
+      value: 
+      objectReference: {fileID: 77589616}
+    - target: {fileID: 4846102637661242587, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846102637661242587, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846102637661242587, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -50.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846102637661242587, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846102637661242587, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846102637661242587, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846102637661242587, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846102637661242587, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846102637661242587, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846102637661242587, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5191242998902529633, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+      propertyPath: m_Name
+      value: Guard
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5191242998902529633, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1407604442}
+    - targetCorrespondingSourceObject: {fileID: 5191242998902529633, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1407604450}
+  m_SourcePrefab: {fileID: 100100000, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
 --- !u!4 &1541057090 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3854708156588275745, guid: 6a4a71e00dd4c4949b5c9683ee890534, type: 3}
@@ -9036,7 +9284,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GuardFlashlight
   spotlight: {fileID: 1812494857}
-  player: {fileID: 93624595}
 --- !u!1001 &1595671689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11252,7 +11499,7 @@ Transform:
   m_GameObject: {fileID: 1893986810}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37.5, y: 0, z: -35.2}
+  m_LocalPosition: {x: -37.5, y: 0, z: -33.54}
   m_LocalScale: {x: 1.6509593, y: 1, z: 1.9759}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11431,7 +11678,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GuardFlashlight
   spotlight: {fileID: 378106010}
-  player: {fileID: 93624595}
 --- !u!1 &1908478787
 GameObject:
   m_ObjectHideFlags: 0
@@ -12380,7 +12626,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GuardFlashlight
   spotlight: {fileID: 1571404195}
-  player: {fileID: 93624595}
 --- !u!4 &1990609230 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6287342898434083339, guid: 9c5453e495a23ce46ad976f9c0931fd5, type: 3}
@@ -13335,6 +13580,10 @@ SceneRoots:
   - {fileID: 1785166247}
   - {fileID: 93624593}
   - {fileID: 1893986814}
+  - {fileID: 1136788401}
+  - {fileID: 395555653}
+  - {fileID: 77589616}
   - {fileID: 555960248}
   - {fileID: 1447667000}
   - {fileID: 1492060155}
+  - {fileID: 1536630164}
