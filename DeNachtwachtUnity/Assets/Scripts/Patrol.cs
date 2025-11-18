@@ -17,7 +17,7 @@ public class Patrol : MonoBehaviour
 
     //State change
     [SerializeField] float sightRange = 3f, attackRange = 2f;
-    [SerializeField] float fieldOfView = 45f;
+    [SerializeField] float fieldOfView = 24f;
     private float actualSightRange;
     bool playerInSight, playerInAttack;
     public bool PlayerInSight => playerInSight;
@@ -46,7 +46,7 @@ public class Patrol : MonoBehaviour
     private float CheckCrouch()
     {
         if (player.GetComponent<PlayerController>().isCrouching)
-            actualSightRange = (float)(sightRange / 2.5);
+            actualSightRange = (float)(sightRange / 2);
         else
             actualSightRange = sightRange;
         return actualSightRange;
@@ -60,36 +60,45 @@ public class Patrol : MonoBehaviour
         
         if (distanceToPlayer <= CheckCrouch())
         {
-            
             float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
-            if (angleToPlayer <= 50f)
+
+            if (angleToPlayer <= fieldOfView)
             {
                 
-                if (!Physics.Raycast(transform.position + Vector3.up, directionToPlayer.normalized, distanceToPlayer, groundLayer))
+                if (HasLineOfSight(directionToPlayer, distanceToPlayer))
                 {
                     playerInSight = true;
                     return true;
                 }
             }
         }
-
         // Player not in sight
         playerInSight = false;
         return false;
-
-        //playerInSight = Physics.CheckSphere(transform.position, actualSightRange, playerLayer);
-        //if (playerInSight)
-        //    return true;
-        //return false;
     }
 
     private bool PlayerInAttackRange()
     {
-        playerInAttack = Physics.CheckSphere(transform.position, attackRange, playerLayer);
-        if (playerInAttack)
-            return true;
-        return false;
+        Vector3 directionToPlayer = player.transform.position - transform.position;
+        float distanceToPlayer = directionToPlayer.magnitude;
+
+        bool playerInAttack = Physics.CheckSphere(transform.position, attackRange, playerLayer);
+        bool hasLOS = HasLineOfSight(directionToPlayer, distanceToPlayer);
+
+        playerInAttack = playerInAttack && hasLOS;
+        return playerInAttack;
     }
+
+    private bool HasLineOfSight(Vector3 directionToPlayer, float distanceToPlayer)
+    {
+        return !Physics.Raycast(
+            transform.position + Vector3.up,
+            directionToPlayer.normalized,
+            distanceToPlayer,
+            groundLayer
+        );
+    }
+
     private void Chase()
     {
         agent.speed = 10f;

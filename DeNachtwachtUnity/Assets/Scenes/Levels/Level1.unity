@@ -482,11 +482,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 718150954947392885, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
       propertyPath: sightRange
-      value: 3.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 718150954947392885, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
       propertyPath: attackRange
-      value: 1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 718150954947392885, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+      propertyPath: fieldOfView
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 718150954947392885, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
       propertyPath: groundLayer.m_Bits
@@ -3178,11 +3182,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 718150954947392885, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
       propertyPath: sightRange
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 718150954947392885, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
       propertyPath: attackRange
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 718150954947392885, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+      propertyPath: fieldOfView
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 718150954947392885, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
       propertyPath: groundLayer.m_Bits
@@ -4405,7 +4413,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 718150954947392885, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
       propertyPath: attackRange
-      value: 3
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 718150954947392885, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
+      propertyPath: fieldOfView
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 718150954947392885, guid: a38e3d253cd29514fbe03e217bf0f694, type: 3}
       propertyPath: groundLayer.m_Bits
